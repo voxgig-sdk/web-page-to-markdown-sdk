@@ -1,0 +1,27 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://github.com/macsplit/urltomarkdown"
+      }
+      description: "This API converts web pages into Markdown format. Users can provide a URL, and the service retrieves the webpage content, formatting it as Markdown for easier readability and integration in Markdown-compatible systems."
+      license: {
+        name: "MIT"
+        url: "https://github.com/macsplit/urltomarkdown/blob/main/license.txt"
+      }
+      servers: [
+        {
+          description: "Production server"
+          url: "https://urltomarkdown.herokuapp.com"
+        }
+      ]
+      title: "Web Page to Markdown"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

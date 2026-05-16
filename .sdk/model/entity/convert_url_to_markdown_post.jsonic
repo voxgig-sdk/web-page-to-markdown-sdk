@@ -1,0 +1,61 @@
+# Entity: convert_url_to_markdown_post
+
+main: kit: entity: convert_url_to_markdown_post: {
+
+  alias: field: {}
+
+  name: "convert_url_to_markdown_post"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: true
+                kind: "query"
+                name: "clean"
+                orig: "clean"
+                reqd: false
+                type: "`$BOOLEAN`"
+              }
+              {
+                example: true
+                kind: "query"
+                name: "link"
+                orig: "link"
+                reqd: false
+                type: "`$BOOLEAN`"
+              }
+              {
+                example: false
+                kind: "query"
+                name: "title"
+                orig: "title"
+                reqd: false
+                type: "`$BOOLEAN`"
+              }
+            ]
+          }
+          method: "POST"
+          orig: "/"
+          select: {
+            exist: [
+              "clean"
+              "link"
+              "title"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

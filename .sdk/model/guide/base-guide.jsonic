@@ -1,0 +1,20 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 2
+  metrics: count: path: 1
+  metrics: count: method: 2
+
+  entity: convert_url_to_markdown_get: {
+    path: "/": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: convert_url_to_markdown_post: {
+    path: "/": {
+      op: create: method: *POST
+    }
+  }
+
+}

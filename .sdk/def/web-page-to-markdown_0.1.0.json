@@ -1,0 +1,226 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Web Page to Markdown",
+    "description": "This API converts web pages into Markdown format. Users can provide a URL, and the service retrieves the webpage content, formatting it as Markdown for easier readability and integration in Markdown-compatible systems.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://github.com/macsplit/urltomarkdown"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://github.com/macsplit/urltomarkdown/blob/main/license.txt"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://urltomarkdown.herokuapp.com",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Convert webpage to Markdown (GET)",
+        "description": "Downloads a requested web page and outputs a markdown version. Optionally includes title, suppresses links, or disables cleaning/filtering.",
+        "operationId": "convertUrlToMarkdownGet",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "description": "The URL of the webpage to convert to Markdown",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uri"
+            },
+            "example": "https://www.mozilla.org/en-GB/firefox/"
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "description": "Include the page title as a heading in the Markdown output. Title is also returned in the X-Title HTTP header.",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "links",
+            "in": "query",
+            "description": "Whether to include links in the Markdown output",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          },
+          {
+            "name": "clean",
+            "in": "query",
+            "description": "Whether to clean/filter content before conversion. When false, output will be more verbose but may have more junk or artefacts.",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully converted webpage to Markdown",
+            "headers": {
+              "X-Title": {
+                "description": "URL-encoded title of the converted webpage (when title parameter is true)",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "Firefox%20-%20Protect%20your%20life%20online%20with%20privacy-first%20products%20%E2%80%94%20Mozilla%20(UK)"
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "description": "The webpage content converted to Markdown format"
+                },
+                "example": "# Firefox - Protect your life online with privacy-first products — Mozilla (UK)\n\nMeet our family of products\n---------------------------\n\n* [![](https://www.mozilla.org/media/protocol/img/logos/firefox/browser/logo.eb1324e44442.svg) ..."
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid URL or parameters",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error - failed to process the webpage",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Convert webpage to Markdown (POST)",
+        "description": "Alternative POST request that allows supplying both URL and HTML content in the POST body for conversion to Markdown.",
+        "operationId": "convertUrlToMarkdownPost",
+        "parameters": [
+          {
+            "name": "title",
+            "in": "query",
+            "description": "Include the page title as a heading in the Markdown output. Title is also returned in the X-Title HTTP header.",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "links",
+            "in": "query",
+            "description": "Whether to include links in the Markdown output",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          },
+          {
+            "name": "clean",
+            "in": "query",
+            "description": "Whether to clean/filter content before conversion. When false, output will be more verbose but may have more junk or artefacts.",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Form data containing the URL and optionally the HTML content to convert",
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "The URL of the webpage being converted"
+                  },
+                  "html": {
+                    "type": "string",
+                    "description": "The HTML content to convert to Markdown (optional - if provided, this HTML will be used instead of fetching from the URL)"
+                  }
+                },
+                "required": [
+                  "url"
+                ]
+              },
+              "example": "url=https%3A%2F%2Fwww.mozilla.org%2Fen-GB%2Ffirefox%2F&html=%3C!doctype%20html%3E%3Chtml%20..."
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully converted webpage to Markdown",
+            "headers": {
+              "X-Title": {
+                "description": "URL-encoded title of the converted webpage (when title parameter is true)",
+                "schema": {
+                  "type": "string"
+                },
+                "example": "Firefox%20-%20Protect%20your%20life%20online%20with%20privacy-first%20products%20%E2%80%94%20Mozilla%20(UK)"
+              }
+            },
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "description": "The webpage content converted to Markdown format"
+                },
+                "example": "# Firefox - Protect your life online with privacy-first products — Mozilla (UK)\n\nMeet our family of products\n---------------------------\n\n* [![](https://www.mozilla.org/media/protocol/img/logos/firefox/browser/logo.eb1324e44442.svg) ..."
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid URL, HTML, or parameters",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error - failed to process the webpage",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "GitHub Repository and Documentation",
+    "url": "https://github.com/macsplit/urltomarkdown"
+  }
+}

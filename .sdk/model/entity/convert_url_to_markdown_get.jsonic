@@ -1,0 +1,70 @@
+# Entity: convert_url_to_markdown_get
+
+main: kit: entity: convert_url_to_markdown_get: {
+
+  alias: field: {}
+
+  name: "convert_url_to_markdown_get"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: true
+                kind: "query"
+                name: "clean"
+                orig: "clean"
+                reqd: false
+                type: "`$BOOLEAN`"
+              }
+              {
+                example: true
+                kind: "query"
+                name: "link"
+                orig: "link"
+                reqd: false
+                type: "`$BOOLEAN`"
+              }
+              {
+                example: false
+                kind: "query"
+                name: "title"
+                orig: "title"
+                reqd: false
+                type: "`$BOOLEAN`"
+              }
+              {
+                example: "https://www.mozilla.org/en-GB/firefox/"
+                kind: "query"
+                name: "url"
+                orig: "url"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/"
+          select: {
+            exist: [
+              "clean"
+              "link"
+              "title"
+              "url"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

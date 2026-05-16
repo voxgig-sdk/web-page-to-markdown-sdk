@@ -1,0 +1,18 @@
+# BasicConvertUrlToMarkdownPostFlow
+
+main: kit: flow: BasicConvertUrlToMarkdownPostFlow:
+{
+  entity: "convert_url_to_markdown_post",
+  kind: "basic",
+  name: "BasicConvertUrlToMarkdownPostFlow",
+  step: [
+    {
+      input: {
+        ref: "convert_url_to_markdown_post_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicConvertUrlToMarkdownPostFlow"
+}

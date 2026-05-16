@@ -1,0 +1,28 @@
+# BasicConvertUrlToMarkdownGetFlow
+
+main: kit: flow: BasicConvertUrlToMarkdownGetFlow:
+{
+  entity: "convert_url_to_markdown_get",
+  kind: "basic",
+  name: "BasicConvertUrlToMarkdownGetFlow",
+  step: [
+    {
+      input: {
+        ref: "convert_url_to_markdown_get_ref01",
+        srcdatavar: "convert_url_to_markdown_get_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-convert_url_to_markdown_get_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicConvertUrlToMarkdownGetFlow"
+}

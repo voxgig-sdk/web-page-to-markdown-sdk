@@ -1,10 +1,10 @@
 package voxgigwebpagetomarkdownsdk
 
 import (
-	"github.com/voxgig-sdk/web-page-to-markdown-sdk/core"
-	"github.com/voxgig-sdk/web-page-to-markdown-sdk/entity"
-	"github.com/voxgig-sdk/web-page-to-markdown-sdk/feature"
-	_ "github.com/voxgig-sdk/web-page-to-markdown-sdk/utility"
+	"github.com/voxgig-sdk/web-page-to-markdown-sdk/go/core"
+	"github.com/voxgig-sdk/web-page-to-markdown-sdk/go/entity"
+	"github.com/voxgig-sdk/web-page-to-markdown-sdk/go/feature"
+	_ "github.com/voxgig-sdk/web-page-to-markdown-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

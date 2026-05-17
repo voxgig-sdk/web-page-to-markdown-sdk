@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/web-page-to-markdown-sdk"
+	sdk "github.com/voxgig-sdk/web-page-to-markdown-sdk/go"
 )
 
 func TestCustomUtility(t *testing.T) {

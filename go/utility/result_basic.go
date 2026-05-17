@@ -3,7 +3,7 @@ package utility
 import (
 	"fmt"
 
-	"github.com/voxgig-sdk/web-page-to-markdown-sdk/core"
+	"github.com/voxgig-sdk/web-page-to-markdown-sdk/go/core"
 )
 
 func resultBasicUtil(ctx *core.Context) *core.Result {

@@ -1,9 +1,15 @@
 {
   "existing": {
     "convert_url_to_markdown_post": {
-      "CONVERT_URL_TO_MARKDOWN_POST00": {},
-      "CONVERT_URL_TO_MARKDOWN_POST01": {},
-      "CONVERT_URL_TO_MARKDOWN_POST02": {}
+      "CONVERT_URL_TO_MARKDOWN_POST00": {
+        "id": "CONVERT_URL_TO_MARKDOWN_POST00"
+      },
+      "CONVERT_URL_TO_MARKDOWN_POST01": {
+        "id": "CONVERT_URL_TO_MARKDOWN_POST01"
+      },
+      "CONVERT_URL_TO_MARKDOWN_POST02": {
+        "id": "CONVERT_URL_TO_MARKDOWN_POST02"
+      }
     }
   },
   "new": {

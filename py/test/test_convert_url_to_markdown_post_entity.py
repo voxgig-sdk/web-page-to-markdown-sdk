@@ -87,7 +87,6 @@ def _convert_url_to_markdown_post_basic_setup(extra):
         "WEBPAGETOMARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_POST_ENTID": idmap,
         "WEBPAGETOMARKDOWN_TEST_LIVE": "FALSE",
         "WEBPAGETOMARKDOWN_TEST_EXPLAIN": "FALSE",
-        "WEBPAGETOMARKDOWN_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -98,7 +97,6 @@ def _convert_url_to_markdown_post_basic_setup(extra):
     if env.get("WEBPAGETOMARKDOWN_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("WEBPAGETOMARKDOWN_APIKEY"),
             },
             extra or {},
         ])

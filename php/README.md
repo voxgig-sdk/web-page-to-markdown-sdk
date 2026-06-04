@@ -20,9 +20,7 @@ loading a specific record.
 <?php
 require_once 'webpagetomarkdown_sdk.php';
 
-$client = new WebPageToMarkdownSDK([
-    "apikey" => getenv("WEB-PAGE-TO-MARKDOWN_APIKEY"),
-]);
+$client = new WebPageToMarkdownSDK([]);
 ```
 
 ### 3. Load a converturltomarkdownget
@@ -113,7 +111,6 @@ Create a `.env.local` file at the project root:
 
 ```
 WEB-PAGE-TO-MARKDOWN_TEST_LIVE=TRUE
-WEB-PAGE-TO-MARKDOWN_APIKEY=<your-key>
 ```
 
 Then run:
@@ -136,7 +133,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

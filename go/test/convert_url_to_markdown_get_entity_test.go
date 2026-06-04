@@ -117,7 +117,6 @@ func convert_url_to_markdown_getBasicSetup(extra map[string]any) *entityTestSetu
 		"WEBPAGETOMARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID": idmap,
 		"WEBPAGETOMARKDOWN_TEST_LIVE":      "FALSE",
 		"WEBPAGETOMARKDOWN_TEST_EXPLAIN":   "FALSE",
-		"WEBPAGETOMARKDOWN_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["WEBPAGETOMARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID"])
@@ -128,7 +127,6 @@ func convert_url_to_markdown_getBasicSetup(extra map[string]any) *entityTestSetu
 	if env["WEBPAGETOMARKDOWN_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["WEBPAGETOMARKDOWN_APIKEY"],
 			},
 			extra,
 		})

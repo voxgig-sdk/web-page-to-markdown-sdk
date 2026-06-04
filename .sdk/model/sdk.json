@@ -20,7 +20,18 @@
           }
         ],
         "title": "Web Page to Markdown",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "Download a web page and convert it to clean Markdown",
+        "homepage": "https://urltomarkdown.com",
+        "docs_url": "https://github.com/macsplit/urltomarkdown",
+        "license_short": "MIT License",
+        "license_md": "- Source released under the MIT License\n- Maintained by [macsplit](https://github.com/macsplit)\n- Free to self-host; the public Heroku instance is best-effort and has been observed to be offline",
+        "about_md": "[Web Page to Markdown](https://urltomarkdown.com) is a small web service that fetches a URL and returns the page rendered as Markdown. It is an open-source project maintained by [macsplit](https://github.com/macsplit) (repository: [macsplit/urltomarkdown](https://github.com/macsplit/urltomarkdown)) and was inspired by the original Heck Yeah Markdown converter.\n\nWhat you get from the API:\n\n- A single conversion endpoint at `/` that accepts a URL (via `GET` query string or `POST` body) and responds with Markdown text\n- Optional query parameters: `title` (inline H1), `links` (preserve links), and `clean` (apply filtering, default true)\n- An `X-Title` response header containing the URL-encoded page title\n- POST form bodies may include `url` and/or pre-fetched `html` to convert\n\nThe public instance is hosted on Heroku at `https://urltomarkdown.herokuapp.com` with CORS enabled. The hosted service is community-run and may return errors or be unavailable; for reliable use, self-host from the GitHub repository.",
+        "entity_desc": {
+          "convert_url_to_markdown_get": "Convert a remote web page to Markdown via a GET request to `/?url=<encoded-url>`, with optional `title`, `links`, and `clean` query flags.",
+          "convert_url_to_markdown_post": "Convert a page to Markdown via a POST to `/` with a form body containing `url` and/or pre-fetched `html`."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -28,7 +39,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "convert_url_to_markdown_get": {

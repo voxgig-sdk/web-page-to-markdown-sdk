@@ -30,12 +30,12 @@ Create a new SDK client instance.
 
 ### Static Methods
 
-#### `sdk.test(testopts, sdkopts)`
+#### `sdk.test(testopts?, sdkopts?)`
 
-Create a test client with mock features active. Both arguments may be `nil`.
+Create a test client with mock features active. Both arguments are optional.
 
 ```lua
-local client = sdk.test(nil, nil)
+local client = sdk.test()
 ```
 
 
@@ -98,7 +98,7 @@ local convert_url_to_markdown_get = client:ConvertUrlToMarkdownGet(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ConvertUrlToMarkdownGet(nil):load({ id = "convert_url_to_markdown_get_id" }, nil)
+local result, err = client:ConvertUrlToMarkdownGet():load({ id = "convert_url_to_markdown_get_id" })
 ```
 
 ### Common Methods
@@ -144,8 +144,8 @@ local convert_url_to_markdown_post = client:ConvertUrlToMarkdownPost(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:ConvertUrlToMarkdownPost(nil):create({
-}, nil)
+local result, err = client:ConvertUrlToMarkdownPost():create({
+})
 ```
 
 ### Common Methods

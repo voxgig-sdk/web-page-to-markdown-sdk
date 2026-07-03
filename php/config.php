@@ -20,6 +20,9 @@ class WebPageToMarkdownConfig
             ],
             "options" => [
                 "base" => "https://urltomarkdown.herokuapp.com",
+                "auth" => [
+                    "prefix" => "Bearer",
+                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],
@@ -34,51 +37,54 @@ class WebPageToMarkdownConfig
           'name' => 'convert_url_to_markdown_get',
           'op' => [
             'load' => [
+              'input' => 'data',
               'name' => 'load',
               'points' => [
                 [
+                  'active' => true,
                   'args' => [
                     'query' => [
                       [
+                        'active' => true,
                         'example' => true,
                         'kind' => 'query',
                         'name' => 'clean',
                         'orig' => 'clean',
                         'reqd' => false,
                         'type' => '`$BOOLEAN`',
-                        'active' => true,
                       ],
                       [
+                        'active' => true,
                         'example' => true,
                         'kind' => 'query',
                         'name' => 'link',
                         'orig' => 'link',
                         'reqd' => false,
                         'type' => '`$BOOLEAN`',
-                        'active' => true,
                       ],
                       [
+                        'active' => true,
                         'example' => false,
                         'kind' => 'query',
                         'name' => 'title',
                         'orig' => 'title',
                         'reqd' => false,
                         'type' => '`$BOOLEAN`',
-                        'active' => true,
                       ],
                       [
+                        'active' => true,
                         'example' => 'https://www.mozilla.org/en-GB/firefox/',
                         'kind' => 'query',
                         'name' => 'url',
                         'orig' => 'url',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'active' => true,
                       ],
                     ],
                   ],
                   'method' => 'GET',
                   'orig' => '/',
+                  'parts' => [],
                   'select' => [
                     'exist' => [
                       'clean',
@@ -91,12 +97,9 @@ class WebPageToMarkdownConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'active' => true,
-                  'parts' => [],
                   'index$' => 0,
                 ],
               ],
-              'input' => 'data',
               'key$' => 'load',
             ],
           ],
@@ -109,42 +112,45 @@ class WebPageToMarkdownConfig
           'name' => 'convert_url_to_markdown_post',
           'op' => [
             'create' => [
+              'input' => 'data',
               'name' => 'create',
               'points' => [
                 [
+                  'active' => true,
                   'args' => [
                     'query' => [
                       [
+                        'active' => true,
                         'example' => true,
                         'kind' => 'query',
                         'name' => 'clean',
                         'orig' => 'clean',
                         'reqd' => false,
                         'type' => '`$BOOLEAN`',
-                        'active' => true,
                       ],
                       [
+                        'active' => true,
                         'example' => true,
                         'kind' => 'query',
                         'name' => 'link',
                         'orig' => 'link',
                         'reqd' => false,
                         'type' => '`$BOOLEAN`',
-                        'active' => true,
                       ],
                       [
+                        'active' => true,
                         'example' => false,
                         'kind' => 'query',
                         'name' => 'title',
                         'orig' => 'title',
                         'reqd' => false,
                         'type' => '`$BOOLEAN`',
-                        'active' => true,
                       ],
                     ],
                   ],
                   'method' => 'POST',
                   'orig' => '/',
+                  'parts' => [],
                   'select' => [
                     'exist' => [
                       'clean',
@@ -156,12 +162,9 @@ class WebPageToMarkdownConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'active' => true,
-                  'parts' => [],
                   'index$' => 0,
                 ],
               ],
-              'input' => 'data',
               'key$' => 'create',
             ],
           ],

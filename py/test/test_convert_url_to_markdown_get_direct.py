@@ -64,12 +64,14 @@ def _convert_url_to_markdown_get_direct_setup(mockres):
     env = runner.env_override({
         "WEBPAGETOMARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID": {},
         "WEBPAGETOMARKDOWN_TEST_LIVE": "FALSE",
+        "WEBPAGETOMARKDOWN_APIKEY": "NONE",
     })
 
     live = env.get("WEBPAGETOMARKDOWN_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("WEBPAGETOMARKDOWN_APIKEY"),
         }
         client = WebPageToMarkdownSDK(merged_opts)
         return {

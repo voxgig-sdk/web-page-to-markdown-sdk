@@ -1,21 +1,8 @@
 # WebPageToMarkdown SDK
 
-Download a web page and convert it to clean Markdown
+Web Page to Markdown client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Web Page to Markdown
-
-[Web Page to Markdown](https://urltomarkdown.com) is a small web service that fetches a URL and returns the page rendered as Markdown. It is an open-source project maintained by [macsplit](https://github.com/macsplit) (repository: [macsplit/urltomarkdown](https://github.com/macsplit/urltomarkdown)) and was inspired by the original Heck Yeah Markdown converter.
-
-What you get from the API:
-
-- A single conversion endpoint at `/` that accepts a URL (via `GET` query string or `POST` body) and responds with Markdown text
-- Optional query parameters: `title` (inline H1), `links` (preserve links), and `clean` (apply filtering, default true)
-- An `X-Title` response header containing the URL-encoded page title
-- POST form bodies may include `url` and/or pre-fetched `html` to convert
-
-The public instance is hosted on Heroku at `https://urltomarkdown.herokuapp.com` with CORS enabled. The hosted service is community-run and may return errors or be unavailable; for reliable use, self-host from the GitHub repository.
 
 ## Try it
 
@@ -49,27 +36,31 @@ gem install web-page-to-markdown-sdk
 luarocks install web-page-to-markdown-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { WebPageToMarkdownSDK } from 'web-page-to-markdown'
 
-const client = new WebPageToMarkdownSDK({})
+const client = new WebPageToMarkdownSDK({
+  apikey: process.env.WEB-PAGE-TO-MARKDOWN_APIKEY,
+})
 
+// Load converturltomarkdownget data
+const converturltomarkdownget = await client.ConvertUrlToMarkdownGet().load({})
+console.log(converturltomarkdownget.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -99,8 +90,8 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **ConvertUrlToMarkdownGet** | Convert a remote web page to Markdown via a GET request to `/?url=<encoded-url>`, with optional `title`, `links`, and `clean` query flags. | `/` |
-| **ConvertUrlToMarkdownPost** | Convert a page to Markdown via a POST to `/` with a form body containing `url` and/or pre-fetched `html`. | `/` |
+| **ConvertUrlToMarkdownGet** |  | `/` |
+| **ConvertUrlToMarkdownPost** |  | `/` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -110,15 +101,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from webpagetomarkdown_sdk import WebPageToMarkdownSDK
 
-client = WebPageToMarkdownSDK({})
+client = WebPageToMarkdownSDK({
+    "apikey": os.environ.get("WEB-PAGE-TO-MARKDOWN_APIKEY"),
+})
 
 
 # Load a specific converturltomarkdownget
-converturltomarkdownget, err = client.ConvertUrlToMarkdownGet(None).load(
-    {"id": "example_id"}, None
-)
+converturltomarkdownget, err = client.ConvertUrlToMarkdownGet().load({"id": "example_id"})
+print(converturltomarkdownget)
 ```
 
 ### PHP
@@ -127,13 +120,14 @@ converturltomarkdownget, err = client.ConvertUrlToMarkdownGet(None).load(
 <?php
 require_once 'webpagetomarkdown_sdk.php';
 
-$client = new WebPageToMarkdownSDK([]);
+$client = new WebPageToMarkdownSDK([
+    "apikey" => getenv("WEB-PAGE-TO-MARKDOWN_APIKEY"),
+]);
 
 
 // Load a specific converturltomarkdownget
-[$converturltomarkdownget, $err] = $client->ConvertUrlToMarkdownGet(null)->load(
-    ["id" => "example_id"], null
-);
+[$converturltomarkdownget, $err] = $client->ConvertUrlToMarkdownGet()->load(["id" => "example_id"]);
+print_r($converturltomarkdownget);
 ```
 
 ### Golang
@@ -141,8 +135,13 @@ $client = new WebPageToMarkdownSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/web-page-to-markdown-sdk/go"
 
-client := sdk.NewWebPageToMarkdownSDK(map[string]any{})
+client := sdk.NewWebPageToMarkdownSDK(map[string]any{
+    "apikey": os.Getenv("WEB-PAGE-TO-MARKDOWN_APIKEY"),
+})
 
+// Load converturltomarkdownget data
+converturltomarkdownget, err := client.ConvertUrlToMarkdownGet(nil).Load(map[string]any{}, nil)
+fmt.Println(converturltomarkdownget)
 ```
 
 ### Ruby
@@ -150,13 +149,14 @@ client := sdk.NewWebPageToMarkdownSDK(map[string]any{})
 ```ruby
 require_relative "WebPageToMarkdown_sdk"
 
-client = WebPageToMarkdownSDK.new({})
+client = WebPageToMarkdownSDK.new({
+  "apikey" => ENV["WEB-PAGE-TO-MARKDOWN_APIKEY"],
+})
 
 
 # Load a specific converturltomarkdownget
-converturltomarkdownget, err = client.ConvertUrlToMarkdownGet(nil).load(
-  { "id" => "example_id" }, nil
-)
+converturltomarkdownget, err = client.ConvertUrlToMarkdownGet().load({ "id" => "example_id" })
+puts converturltomarkdownget
 ```
 
 ### Lua
@@ -164,13 +164,14 @@ converturltomarkdownget, err = client.ConvertUrlToMarkdownGet(nil).load(
 ```lua
 local sdk = require("web-page-to-markdown_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("WEB-PAGE-TO-MARKDOWN_APIKEY"),
+})
 
 
 -- Load a specific converturltomarkdownget
-local converturltomarkdownget, err = client:ConvertUrlToMarkdownGet(nil):load(
-  { id = "example_id" }, nil
-)
+local converturltomarkdownget, err = client:ConvertUrlToMarkdownGet():load({ id = "example_id" })
+print(converturltomarkdownget)
 ```
 
 ## Unit testing in offline mode
@@ -189,25 +190,21 @@ const result = await client.ConvertUrlToMarkdownGet().load({ id: 'test01' })
 ### Python
 
 ```python
-client = WebPageToMarkdownSDK.test(None, None)
-result, err = client.ConvertUrlToMarkdownGet(None).load(
-    {"id": "test01"}, None
-)
+client = WebPageToMarkdownSDK.test()
+result, err = client.ConvertUrlToMarkdownGet().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = WebPageToMarkdownSDK::test(null, null);
-[$result, $err] = $client->ConvertUrlToMarkdownGet(null)->load(
-    ["id" => "test01"], null
-);
+$client = WebPageToMarkdownSDK::test();
+[$result, $err] = $client->ConvertUrlToMarkdownGet()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.ConvertUrlToMarkdownGet(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -216,19 +213,15 @@ result, err := client.ConvertUrlToMarkdownGet(nil).Load(
 ### Ruby
 
 ```ruby
-client = WebPageToMarkdownSDK.test(nil, nil)
-result, err = client.ConvertUrlToMarkdownGet(nil).load(
-  { "id" => "test01" }, nil
-)
+client = WebPageToMarkdownSDK.test
+result, err = client.ConvertUrlToMarkdownGet().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:ConvertUrlToMarkdownGet(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:ConvertUrlToMarkdownGet():load({ id = "test01" })
 ```
 
 ## How it works
@@ -332,15 +325,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Web Page to Markdown
-
-- Upstream: [https://urltomarkdown.com](https://urltomarkdown.com)
-- API docs: [https://github.com/macsplit/urltomarkdown](https://github.com/macsplit/urltomarkdown)
-
-- Source released under the MIT License
-- Maintained by [macsplit](https://github.com/macsplit)
-- Free to self-host; the public Heroku instance is best-effort and has been observed to be offline
 
 ---
 

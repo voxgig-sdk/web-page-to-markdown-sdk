@@ -113,6 +113,7 @@ function basicSetup(extra?: any) {
     'WEB_PAGE_TO_MARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_POST_ENTID': idmap,
     'WEB_PAGE_TO_MARKDOWN_TEST_LIVE': 'FALSE',
     'WEB_PAGE_TO_MARKDOWN_TEST_EXPLAIN': 'FALSE',
+    'WEB_PAGE_TO_MARKDOWN_APIKEY': 'NONE',
   })
 
   idmap = env['WEB_PAGE_TO_MARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_POST_ENTID']
@@ -122,6 +123,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new WebPageToMarkdownSDK(merge([
       {
+        apikey: env.WEB_PAGE_TO_MARKDOWN_APIKEY,
       },
       extra
     ]))

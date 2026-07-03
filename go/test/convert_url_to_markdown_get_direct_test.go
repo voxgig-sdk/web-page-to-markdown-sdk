@@ -105,12 +105,14 @@ func convert_url_to_markdown_getDirectSetup(mockres any) *convert_url_to_markdow
 	env := envOverride(map[string]any{
 		"WEBPAGETOMARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID": map[string]any{},
 		"WEBPAGETOMARKDOWN_TEST_LIVE":    "FALSE",
+		"WEBPAGETOMARKDOWN_APIKEY":       "NONE",
 	})
 
 	live := env["WEBPAGETOMARKDOWN_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["WEBPAGETOMARKDOWN_APIKEY"],
 		}
 		client := sdk.NewWebPageToMarkdownSDK(mergedOpts)
 

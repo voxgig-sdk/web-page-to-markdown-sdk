@@ -1,9 +1,318 @@
 {
-  "name": "web-page-to-markdown",
-  "origin": "voxgig-sdk",
   "def": "web-page-to-markdown_0.1.0.json",
   "main": {
+    "def": {
+      "desc": ""
+    },
     "kit": {
+      "config": {
+        "auth": {
+          "prefix": "Bearer"
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ],
+        "headers": {
+          "content-type": "application/json"
+        }
+      },
+      "entity": {
+        "convert_url_to_markdown_get": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": [],
+          "name": "convert_url_to_markdown_get",
+          "op": {
+            "load": {
+              "input": "data",
+              "name": "load",
+              "points": [
+                {
+                  "active": true,
+                  "args": {
+                    "query": [
+                      {
+                        "active": true,
+                        "example": true,
+                        "kind": "query",
+                        "name": "clean",
+                        "orig": "clean",
+                        "reqd": false,
+                        "type": "`$BOOLEAN`"
+                      },
+                      {
+                        "active": true,
+                        "example": true,
+                        "kind": "query",
+                        "name": "link",
+                        "orig": "link",
+                        "reqd": false,
+                        "type": "`$BOOLEAN`"
+                      },
+                      {
+                        "active": true,
+                        "example": false,
+                        "kind": "query",
+                        "name": "title",
+                        "orig": "title",
+                        "reqd": false,
+                        "type": "`$BOOLEAN`"
+                      },
+                      {
+                        "active": true,
+                        "example": "https://www.mozilla.org/en-GB/firefox/",
+                        "kind": "query",
+                        "name": "url",
+                        "orig": "url",
+                        "reqd": true,
+                        "type": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "method": "GET",
+                  "orig": "/",
+                  "parts": [],
+                  "select": {
+                    "exist": [
+                      "clean",
+                      "link",
+                      "title",
+                      "url"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "convert_url_to_markdown_post": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": [],
+          "name": "convert_url_to_markdown_post",
+          "op": {
+            "create": {
+              "input": "data",
+              "name": "create",
+              "points": [
+                {
+                  "active": true,
+                  "args": {
+                    "query": [
+                      {
+                        "active": true,
+                        "example": true,
+                        "kind": "query",
+                        "name": "clean",
+                        "orig": "clean",
+                        "reqd": false,
+                        "type": "`$BOOLEAN`"
+                      },
+                      {
+                        "active": true,
+                        "example": true,
+                        "kind": "query",
+                        "name": "link",
+                        "orig": "link",
+                        "reqd": false,
+                        "type": "`$BOOLEAN`"
+                      },
+                      {
+                        "active": true,
+                        "example": false,
+                        "kind": "query",
+                        "name": "title",
+                        "orig": "title",
+                        "reqd": false,
+                        "type": "`$BOOLEAN`"
+                      }
+                    ]
+                  },
+                  "method": "POST",
+                  "orig": "/",
+                  "parts": [],
+                  "select": {
+                    "exist": [
+                      "clean",
+                      "link",
+                      "title"
+                    ]
+                  },
+                  "transform": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        }
+      },
+      "feature": {
+        "test": {
+          "active": true,
+          "config": {
+            "options": {
+              "active": false
+            }
+          },
+          "hook": {
+            "GetData": {
+              "active": true,
+              "await": false
+            },
+            "GetMatch": {
+              "active": true,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": true,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": true,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PrePoint": {
+              "active": true,
+              "await": false
+            },
+            "PreRequest": {
+              "active": true,
+              "await": false
+            },
+            "PreResponse": {
+              "active": true,
+              "await": false
+            },
+            "PreResult": {
+              "active": true,
+              "await": false
+            },
+            "PreSpec": {
+              "active": true,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": true,
+              "await": false
+            },
+            "SetMatch": {
+              "active": true,
+              "await": false
+            }
+          },
+          "name": "test",
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "In-memory mock transport for testing without a live server",
+          "version": "0.0.1"
+        }
+      },
+      "flow": {
+        "BasicConvertUrlToMarkdownGetFlow": {
+          "active": true,
+          "entity": "convert_url_to_markdown_get",
+          "key$": "BasicConvertUrlToMarkdownGetFlow",
+          "kind": "basic",
+          "name": "BasicConvertUrlToMarkdownGetFlow",
+          "param": {},
+          "step": [
+            {
+              "active": true,
+              "data": {},
+              "input": {
+                "ref": "convert_url_to_markdown_get_ref01",
+                "srcdatavar": "convert_url_to_markdown_get_ref01_data",
+                "suffix": "_dt0"
+              },
+              "match": {},
+              "op": "load",
+              "spec": [],
+              "valid": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-convert_url_to_markdown_get_ref01"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "BasicConvertUrlToMarkdownPostFlow": {
+          "active": true,
+          "entity": "convert_url_to_markdown_post",
+          "key$": "BasicConvertUrlToMarkdownPostFlow",
+          "kind": "basic",
+          "name": "BasicConvertUrlToMarkdownPostFlow",
+          "param": {},
+          "step": [
+            {
+              "active": true,
+              "data": {},
+              "input": {
+                "ref": "convert_url_to_markdown_post_ref01"
+              },
+              "match": {},
+              "op": "create",
+              "spec": [],
+              "valid": []
+            }
+          ]
+        }
+      },
       "info": {
         "contact": {
           "url": "https://github.com/macsplit/urltomarkdown"
@@ -20,335 +329,35 @@
           }
         ],
         "title": "Web Page to Markdown",
-        "version": "1.0.0",
-        "tagline": "Download a web page and convert it to clean Markdown",
-        "homepage": "https://urltomarkdown.com",
-        "docs_url": "https://github.com/macsplit/urltomarkdown",
-        "license_short": "MIT License",
-        "license_md": "- Source released under the MIT License\n- Maintained by [macsplit](https://github.com/macsplit)\n- Free to self-host; the public Heroku instance is best-effort and has been observed to be offline",
-        "about_md": "[Web Page to Markdown](https://urltomarkdown.com) is a small web service that fetches a URL and returns the page rendered as Markdown. It is an open-source project maintained by [macsplit](https://github.com/macsplit) (repository: [macsplit/urltomarkdown](https://github.com/macsplit/urltomarkdown)) and was inspired by the original Heck Yeah Markdown converter.\n\nWhat you get from the API:\n\n- A single conversion endpoint at `/` that accepts a URL (via `GET` query string or `POST` body) and responds with Markdown text\n- Optional query parameters: `title` (inline H1), `links` (preserve links), and `clean` (apply filtering, default true)\n- An `X-Title` response header containing the URL-encoded page title\n- POST form bodies may include `url` and/or pre-fetched `html` to convert\n\nThe public instance is hosted on Heroku at `https://urltomarkdown.herokuapp.com` with CORS enabled. The hosted service is community-run and may return errors or be unavailable; for reliable use, self-host from the GitHub repository.",
-        "entity_desc": {
-          "convert_url_to_markdown_get": "Convert a remote web page to Markdown via a GET request to `/?url=<encoded-url>`, with optional `title`, `links`, and `clean` query flags.",
-          "convert_url_to_markdown_post": "Convert a page to Markdown via a POST to `/` with a form body containing `url` and/or pre-fetched `html`."
-        },
-        "auth": false
+        "version": "1.0.0"
       },
-      "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
-        "headers": {
-          "content-type": "application/json"
-        },
-        "docs_order": [
-          "ts",
-          "py",
-          "php",
-          "go",
-          "rb",
-          "lua"
-        ]
-      },
-      "entity": {
-        "convert_url_to_markdown_get": {
-          "alias": {
-            "field": {}
-          },
-          "name": "convert_url_to_markdown_get",
-          "op": {
-            "load": {
-              "name": "load",
-              "points": [
-                {
-                  "args": {
-                    "query": [
-                      {
-                        "example": true,
-                        "kind": "query",
-                        "name": "clean",
-                        "orig": "clean",
-                        "reqd": false,
-                        "type": "`$BOOLEAN`",
-                        "active": true
-                      },
-                      {
-                        "example": true,
-                        "kind": "query",
-                        "name": "link",
-                        "orig": "link",
-                        "reqd": false,
-                        "type": "`$BOOLEAN`",
-                        "active": true
-                      },
-                      {
-                        "example": false,
-                        "kind": "query",
-                        "name": "title",
-                        "orig": "title",
-                        "reqd": false,
-                        "type": "`$BOOLEAN`",
-                        "active": true
-                      },
-                      {
-                        "example": "https://www.mozilla.org/en-GB/firefox/",
-                        "kind": "query",
-                        "name": "url",
-                        "orig": "url",
-                        "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
-                      }
-                    ]
-                  },
-                  "method": "GET",
-                  "orig": "/",
-                  "select": {
-                    "exist": [
-                      "clean",
-                      "link",
-                      "title",
-                      "url"
-                    ]
-                  },
-                  "transform": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  },
-                  "active": true,
-                  "parts": []
-                }
-              ],
-              "input": "data"
-            }
-          },
-          "active": true,
-          "fields": [],
-          "relations": {
-            "ancestors": []
-          }
-        },
-        "convert_url_to_markdown_post": {
-          "alias": {
-            "field": {}
-          },
-          "name": "convert_url_to_markdown_post",
-          "op": {
-            "create": {
-              "name": "create",
-              "points": [
-                {
-                  "args": {
-                    "query": [
-                      {
-                        "example": true,
-                        "kind": "query",
-                        "name": "clean",
-                        "orig": "clean",
-                        "reqd": false,
-                        "type": "`$BOOLEAN`",
-                        "active": true
-                      },
-                      {
-                        "example": true,
-                        "kind": "query",
-                        "name": "link",
-                        "orig": "link",
-                        "reqd": false,
-                        "type": "`$BOOLEAN`",
-                        "active": true
-                      },
-                      {
-                        "example": false,
-                        "kind": "query",
-                        "name": "title",
-                        "orig": "title",
-                        "reqd": false,
-                        "type": "`$BOOLEAN`",
-                        "active": true
-                      }
-                    ]
-                  },
-                  "method": "POST",
-                  "orig": "/",
-                  "select": {
-                    "exist": [
-                      "clean",
-                      "link",
-                      "title"
-                    ]
-                  },
-                  "transform": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  },
-                  "active": true,
-                  "parts": []
-                }
-              ],
-              "input": "data"
-            }
-          },
-          "active": true,
-          "fields": [],
-          "relations": {
-            "ancestors": []
-          }
-        }
-      },
-      "feature": {
-        "test": {
-          "name": "test",
-          "title": "In-memory mock transport for testing without a live server",
-          "version": "0.0.1",
-          "active": true,
-          "config": {
-            "options": {
-              "active": false
-            }
-          },
-          "hook": {
-            "PostConstruct": {
-              "active": true,
-              "await": false
-            },
-            "PostConstructEntity": {
-              "active": true,
-              "await": false
-            },
-            "SetData": {
-              "active": true,
-              "await": false
-            },
-            "GetData": {
-              "active": true,
-              "await": false
-            },
-            "SetMatch": {
-              "active": true
-            },
-            "GetMatch": {
-              "active": true,
-              "await": false
-            },
-            "PrePoint": {
-              "active": true
-            },
-            "PreSpec": {
-              "active": true,
-              "await": false
-            },
-            "PreRequest": {
-              "active": true,
-              "await": false
-            },
-            "PreResponse": {
-              "active": true,
-              "await": false
-            },
-            "PreResult": {
-              "active": true,
-              "await": false
-            },
-            "PreTarget": {
-              "active": false,
-              "await": false
-            },
-            "PostOperation": {
-              "active": false,
-              "await": false
-            }
-          },
-          "target": {
-            "ts": {
-              "deps": {}
-            },
-            "go": {
-              "deps": {}
-            },
-            "lua": {
-              "deps": {}
-            },
-            "php": {
-              "deps": {}
-            },
-            "py": {
-              "deps": {}
-            },
-            "rb": {
-              "deps": {}
-            },
-            "go-cli": {
-              "deps": {}
-            },
-            "go-mcp": {
-              "deps": {}
-            }
-          }
-        }
-      },
-      "flow": {
-        "BasicConvertUrlToMarkdownGetFlow": {
-          "entity": "convert_url_to_markdown_get",
-          "kind": "basic",
-          "name": "BasicConvertUrlToMarkdownGetFlow",
-          "step": [
-            {
-              "input": {
-                "ref": "convert_url_to_markdown_get_ref01",
-                "srcdatavar": "convert_url_to_markdown_get_ref01_data",
-                "suffix": "_dt0"
-              },
-              "op": "load",
-              "valid": [
-                {
-                  "apply": "TextFieldMark",
-                  "def": {
-                    "mark": "Mark01-convert_url_to_markdown_get_ref01"
-                  }
-                }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
-            }
-          ],
-          "key$": "BasicConvertUrlToMarkdownGetFlow",
-          "active": true,
-          "param": {}
-        },
-        "BasicConvertUrlToMarkdownPostFlow": {
-          "entity": "convert_url_to_markdown_post",
-          "kind": "basic",
-          "name": "BasicConvertUrlToMarkdownPostFlow",
-          "step": [
-            {
-              "input": {
-                "ref": "convert_url_to_markdown_post_ref01"
-              },
-              "op": "create",
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": [],
-              "valid": []
-            }
-          ],
-          "key$": "BasicConvertUrlToMarkdownPostFlow",
-          "active": true,
-          "param": {}
-        }
-      },
+      "option": {},
       "target": {
-        "go-cli": {
-          "title": "Go CLI",
-          "ext": "go",
+        "go": {
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "go",
           "module": {
             "name": "web-page-to-markdown"
           },
+          "name": "go",
+          "srcfeature": false,
+          "title": "Golang"
+        },
+        "go-cli": {
+          "active": true,
+          "comment": {
+            "line": "//"
+          },
+          "deps": {},
+          "ext": "go",
+          "module": {
+            "name": "web-page-to-markdown"
+          },
+          "name": "go-cli",
           "phase": {
             "entity": {
               "active": false
@@ -363,19 +372,19 @@
               "active": false
             }
           },
-          "deps": {},
-          "name": "go-cli",
-          "active": true
+          "title": "Go CLI"
         },
         "go-mcp": {
-          "title": "Go MCP server",
-          "ext": "go",
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "go",
           "module": {
             "name": "web-page-to-markdown"
           },
+          "name": "go-mcp",
           "phase": {
             "entity": {
               "active": false
@@ -390,138 +399,120 @@
               "active": false
             }
           },
-          "deps": {},
-          "name": "go-mcp",
-          "active": true
-        },
-        "ts": {
-          "title": "TypeScript",
-          "ext": "ts",
-          "comment": {
-            "line": "//"
-          },
-          "module": {
-            "name": "web-page-to-markdown"
-          },
-          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
-          "deps": {
-            "dotenv": {
-              "active": true,
-              "version": "^17.4.2",
-              "kind": "dev"
-            },
-            "typescript": {
-              "active": true,
-              "version": "^5.9.3",
-              "kind": "dev"
-            },
-            "@types/node": {
-              "active": true,
-              "version": "^25.6.0",
-              "kind": "dev"
-            }
-          },
-          "name": "ts",
-          "active": true
-        },
-        "go": {
-          "title": "Golang",
-          "ext": "go",
-          "comment": {
-            "line": "//"
-          },
-          "module": {
-            "name": "web-page-to-markdown"
-          },
-          "srcfeature": false,
-          "deps": {},
-          "name": "go",
-          "active": true
+          "title": "Go MCP server"
         },
         "lua": {
-          "title": "Lua",
-          "ext": "lua",
+          "active": true,
           "comment": {
             "line": "--"
           },
-          "module": {
-            "name": "web-page-to-markdown"
-          },
-          "srcfeature": false,
           "deps": {
             "dkjson": {
               "active": true,
-              "version": "2.5",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "2.5"
             }
           },
+          "ext": "lua",
+          "module": {
+            "name": "web-page-to-markdown"
+          },
           "name": "lua",
-          "active": true
+          "srcfeature": false,
+          "title": "Lua"
         },
         "php": {
-          "title": "PHP",
-          "ext": "php",
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "php",
           "module": {
             "name": "web-page-to-markdown"
           },
-          "srcfeature": false,
-          "deps": {},
           "name": "php",
-          "active": true
+          "srcfeature": false,
+          "title": "PHP"
         },
         "py": {
-          "title": "Python",
-          "ext": "py",
+          "active": true,
           "comment": {
             "line": "#"
           },
-          "module": {
-            "name": "web-page-to-markdown"
-          },
-          "srcfeature": false,
           "deps": {
             "requests": {
               "active": true,
-              "version": "2.33",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "2.33"
             }
           },
-          "name": "py",
-          "active": true
-        },
-        "rb": {
-          "title": "Ruby",
-          "ext": "rb",
-          "comment": {
-            "line": "#"
-          },
+          "ext": "py",
           "module": {
             "name": "web-page-to-markdown"
           },
+          "name": "py",
           "srcfeature": false,
+          "title": "Python"
+        },
+        "rb": {
+          "active": true,
+          "comment": {
+            "line": "#"
+          },
           "deps": {
-            "voxgig-struct": {
-              "active": true,
-              "version": "0.0.10",
-              "kind": "prod"
-            },
             "json": {
               "active": true,
-              "version": "0",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "0"
+            },
+            "voxgig-struct": {
+              "active": true,
+              "kind": "prod",
+              "version": "0.0.10"
             }
           },
+          "ext": "rb",
+          "module": {
+            "name": "web-page-to-markdown"
+          },
           "name": "rb",
-          "active": true
+          "srcfeature": false,
+          "title": "Ruby"
+        },
+        "ts": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "//"
+          },
+          "deps": {
+            "@types/node": {
+              "active": true,
+              "kind": "dev",
+              "version": "^25.6.0"
+            },
+            "dotenv": {
+              "active": true,
+              "kind": "dev",
+              "version": "^17.4.2"
+            },
+            "typescript": {
+              "active": true,
+              "kind": "dev",
+              "version": "^5.9.3"
+            }
+          },
+          "ext": "ts",
+          "module": {
+            "name": "web-page-to-markdown"
+          },
+          "name": "ts",
+          "title": "TypeScript"
         }
-      },
-      "option": {}
-    },
-    "def": {
-      "desc": ""
+      }
     }
-  }
+  },
+  "name": "web-page-to-markdown",
+  "origin": "voxgig-sdk"
 }

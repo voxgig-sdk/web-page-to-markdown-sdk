@@ -10,7 +10,7 @@ The Lua SDK for the WebPageToMarkdown API — an entity-oriented client using Lu
 
 ## Install
 ```bash
-luarocks install web-page-to-markdown-sdk
+luarocks install voxgig-sdk-web-page-to-markdown
 ```
 
 If the module is not yet published, add the source directory to

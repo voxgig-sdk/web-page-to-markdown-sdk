@@ -10,13 +10,13 @@ The Ruby SDK for the WebPageToMarkdown API — an entity-oriented client using i
 
 ## Install
 ```bash
-gem install web-page-to-markdown-sdk
+gem install voxgig-sdk-web-page-to-markdown
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "web-page-to-markdown-sdk"
+gem "voxgig-sdk-web-page-to-markdown"
 ```
 
 Then run:

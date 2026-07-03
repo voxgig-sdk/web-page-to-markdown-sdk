@@ -10,7 +10,7 @@ The Python SDK for the WebPageToMarkdown API — an entity-oriented client follo
 
 ## Install
 ```bash
-pip install web-page-to-markdown-sdk
+pip install voxgig-sdk-web-page-to-markdown
 ```
 
 Or install from source:

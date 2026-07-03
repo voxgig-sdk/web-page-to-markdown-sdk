@@ -10,7 +10,7 @@ The TypeScript SDK for the WebPageToMarkdown API — a type-safe, entity-oriente
 
 ## Install
 ```bash
-npm install web-page-to-markdown
+npm install @voxgig-sdk/web-page-to-markdown
 ```
 ## Tutorial: your first API call
 

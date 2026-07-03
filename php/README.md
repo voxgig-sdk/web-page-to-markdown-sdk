@@ -10,7 +10,7 @@ The PHP SDK for the WebPageToMarkdown API — an entity-oriented client using PH
 
 ## Install
 ```bash
-composer require voxgig/web-page-to-markdown-sdk
+composer require voxgig-sdk/web-page-to-markdown
 ```
 
 

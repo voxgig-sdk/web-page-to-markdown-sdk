@@ -245,11 +245,17 @@ func (sdk *WebPageToMarkdownSDK) Direct(fetchargs map[string]any) (map[string]an
 }
 
 
+// ConvertUrlToMarkdownGet returns a ConvertUrlToMarkdownGet entity bound to this client.
+// Idiomatic usage: client.ConvertUrlToMarkdownGet(nil).List(nil, nil) or
+// client.ConvertUrlToMarkdownGet(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *WebPageToMarkdownSDK) ConvertUrlToMarkdownGet(data map[string]any) WebPageToMarkdownEntity {
 	return NewConvertUrlToMarkdownGetEntityFunc(sdk, data)
 }
 
 
+// ConvertUrlToMarkdownPost returns a ConvertUrlToMarkdownPost entity bound to this client.
+// Idiomatic usage: client.ConvertUrlToMarkdownPost(nil).List(nil, nil) or
+// client.ConvertUrlToMarkdownPost(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *WebPageToMarkdownSDK) ConvertUrlToMarkdownPost(data map[string]any) WebPageToMarkdownEntity {
 	return NewConvertUrlToMarkdownPostEntityFunc(sdk, data)
 }

@@ -83,6 +83,10 @@ end
 
 
 
+---@param reqdata ConvertUrlToMarkdownPostCreateData
+---@param ctrl? table
+---@return ConvertUrlToMarkdownPost
+---@return string? err
 function ConvertUrlToMarkdownPostEntity:create(reqdata, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

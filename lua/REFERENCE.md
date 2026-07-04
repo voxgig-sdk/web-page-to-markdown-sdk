@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -88,7 +87,7 @@ same parameters as `direct()`.
 ## ConvertUrlToMarkdownGetEntity
 
 ```lua
-local convert_url_to_markdown_get = client:ConvertUrlToMarkdownGet(nil)
+local convert_url_to_markdown_get = client:convert_url_to_markdown_get(nil)
 ```
 
 ### Operations
@@ -98,7 +97,7 @@ local convert_url_to_markdown_get = client:ConvertUrlToMarkdownGet(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ConvertUrlToMarkdownGet():load({ id = "convert_url_to_markdown_get_id" })
+local result, err = client:convert_url_to_markdown_get():load({ id = "convert_url_to_markdown_get_id" })
 ```
 
 ### Common Methods
@@ -134,7 +133,7 @@ Return the entity name.
 ## ConvertUrlToMarkdownPostEntity
 
 ```lua
-local convert_url_to_markdown_post = client:ConvertUrlToMarkdownPost(nil)
+local convert_url_to_markdown_post = client:convert_url_to_markdown_post(nil)
 ```
 
 ### Operations
@@ -144,7 +143,7 @@ local convert_url_to_markdown_post = client:ConvertUrlToMarkdownPost(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:ConvertUrlToMarkdownPost():create({
+local result, err = client:convert_url_to_markdown_post():create({
 })
 ```
 

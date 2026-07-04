@@ -85,6 +85,27 @@ func (e *ConvertUrlToMarkdownPostEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an ConvertUrlToMarkdownPost; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *ConvertUrlToMarkdownPostEntity) DataTyped(data ...ConvertUrlToMarkdownPost) ConvertUrlToMarkdownPost {
+	if len(data) > 0 {
+		return typedFrom[ConvertUrlToMarkdownPost](e.Data(asMap(data[0])))
+	}
+	return typedFrom[ConvertUrlToMarkdownPost](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through ConvertUrlToMarkdownPost (all fields
+// optional at the wire level).
+func (e *ConvertUrlToMarkdownPostEntity) MatchTyped(match ...ConvertUrlToMarkdownPost) ConvertUrlToMarkdownPost {
+	if len(match) > 0 {
+		return typedFrom[ConvertUrlToMarkdownPost](e.Match(asMap(match[0])))
+	}
+	return typedFrom[ConvertUrlToMarkdownPost](e.Match())
+}
+
 func (e *ConvertUrlToMarkdownPostEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("load", e.name)
 }
@@ -116,6 +137,17 @@ func (e *ConvertUrlToMarkdownPostEntity) Create(reqdata map[string]any, ctrl map
 			}
 		}
 	})
+}
+
+// CreateTyped is the statically-typed variant of Create: it takes an
+// ConvertUrlToMarkdownPostCreateData and returns an ConvertUrlToMarkdownPost. It delegates to the untyped
+// Create (identical runtime) and converts at the typed boundary.
+func (e *ConvertUrlToMarkdownPostEntity) CreateTyped(reqdata ConvertUrlToMarkdownPostCreateData, ctrl map[string]any) (ConvertUrlToMarkdownPost, error) {
+	res, err := e.Create(asMap(reqdata), ctrl)
+	if err != nil {
+		return ConvertUrlToMarkdownPost{}, err
+	}
+	return typedFrom[ConvertUrlToMarkdownPost](res), nil
 }
 
 

@@ -244,12 +244,38 @@ end
 
 
 
+-- Idiomatic facade: client:convert_url_to_markdown_get():list() / client:convert_url_to_markdown_get():load({ id = ... })
+function WebPageToMarkdownSDK:convert_url_to_markdown_get(data)
+  local EntityMod = require("entity.convert_url_to_markdown_get_entity")
+  if data == nil then
+    if self._convert_url_to_markdown_get == nil then
+      self._convert_url_to_markdown_get = EntityMod.new(self, nil)
+    end
+    return self._convert_url_to_markdown_get
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:convert_url_to_markdown_get() instead.
 function WebPageToMarkdownSDK:ConvertUrlToMarkdownGet(data)
   local EntityMod = require("entity.convert_url_to_markdown_get_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:convert_url_to_markdown_post():list() / client:convert_url_to_markdown_post():load({ id = ... })
+function WebPageToMarkdownSDK:convert_url_to_markdown_post(data)
+  local EntityMod = require("entity.convert_url_to_markdown_post_entity")
+  if data == nil then
+    if self._convert_url_to_markdown_post == nil then
+      self._convert_url_to_markdown_post = EntityMod.new(self, nil)
+    end
+    return self._convert_url_to_markdown_post
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:convert_url_to_markdown_post() instead.
 function WebPageToMarkdownSDK:ConvertUrlToMarkdownPost(data)
   local EntityMod = require("entity.convert_url_to_markdown_post_entity")
   return EntityMod.new(self, data)

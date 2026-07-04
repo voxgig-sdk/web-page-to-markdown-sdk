@@ -144,16 +144,23 @@ class WebPageToMarkdownSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class WebPageToMarkdownSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,20 +212,42 @@ class WebPageToMarkdownSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def convert_url_to_markdown_get(self):
+        """Idiomatic facade: client.convert_url_to_markdown_get.list() / client.convert_url_to_markdown_get.load({"id": ...})."""
+        from entity.convert_url_to_markdown_get_entity import ConvertUrlToMarkdownGetEntity
+        cached = getattr(self, "_convert_url_to_markdown_get", None)
+        if cached is None:
+            cached = ConvertUrlToMarkdownGetEntity(self, None)
+            self._convert_url_to_markdown_get = cached
+        return cached
 
     def ConvertUrlToMarkdownGet(self, data=None):
+        # Deprecated: use client.convert_url_to_markdown_get instead.
         from entity.convert_url_to_markdown_get_entity import ConvertUrlToMarkdownGetEntity
         return ConvertUrlToMarkdownGetEntity(self, data)
 
 
+    @property
+    def convert_url_to_markdown_post(self):
+        """Idiomatic facade: client.convert_url_to_markdown_post.list() / client.convert_url_to_markdown_post.load({"id": ...})."""
+        from entity.convert_url_to_markdown_post_entity import ConvertUrlToMarkdownPostEntity
+        cached = getattr(self, "_convert_url_to_markdown_post", None)
+        if cached is None:
+            cached = ConvertUrlToMarkdownPostEntity(self, None)
+            self._convert_url_to_markdown_post = cached
+        return cached
+
     def ConvertUrlToMarkdownPost(self, data=None):
+        # Deprecated: use client.convert_url_to_markdown_post instead.
         from entity.convert_url_to_markdown_post_entity import ConvertUrlToMarkdownPostEntity
         return ConvertUrlToMarkdownPostEntity(self, data)
 

@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  ConvertUrlToMarkdownGet,
+  ConvertUrlToMarkdownGetLoadMatch,
+} from '../WebPageToMarkdownTypes'
 
 // TODO: needs Entity superclass
-class ConvertUrlToMarkdownGetEntity extends WebPageToMarkdownEntityBase {
+class ConvertUrlToMarkdownGetEntity extends WebPageToMarkdownEntityBase<ConvertUrlToMarkdownGet> {
 
   constructor(client: WebPageToMarkdownSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class ConvertUrlToMarkdownGetEntity extends WebPageToMarkdownEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: ConvertUrlToMarkdownGetLoadMatch, ctrl?: Control): Promise<ConvertUrlToMarkdownGet> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class ConvertUrlToMarkdownGetEntity extends WebPageToMarkdownEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<ConvertUrlToMarkdownGet> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

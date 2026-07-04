@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -122,7 +121,7 @@ Alias for `WebPageToMarkdownSDK.test()`.
 ## ConvertUrlToMarkdownGetEntity
 
 ```ts
-const convert_url_to_markdown_get = client.ConvertUrlToMarkdownGet()
+const convert_url_to_markdown_get = client.convert_url_to_markdown_get
 ```
 
 ### Operations
@@ -132,7 +131,7 @@ const convert_url_to_markdown_get = client.ConvertUrlToMarkdownGet()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ConvertUrlToMarkdownGet().load({ id: 'convert_url_to_markdown_get_id' })
+const result = await client.convert_url_to_markdown_get.load({ id: 'convert_url_to_markdown_get_id' })
 ```
 
 ### Common Methods
@@ -166,7 +165,7 @@ Return a copy of the entity options.
 ## ConvertUrlToMarkdownPostEntity
 
 ```ts
-const convert_url_to_markdown_post = client.ConvertUrlToMarkdownPost()
+const convert_url_to_markdown_post = client.convert_url_to_markdown_post
 ```
 
 ### Operations
@@ -176,7 +175,7 @@ const convert_url_to_markdown_post = client.ConvertUrlToMarkdownPost()
 Create a new entity with the given data.
 
 ```ts
-const result = await client.ConvertUrlToMarkdownPost().create({
+const result = await client.convert_url_to_markdown_post.create({
 })
 ```
 

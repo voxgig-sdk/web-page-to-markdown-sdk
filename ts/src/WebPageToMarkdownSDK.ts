@@ -3,6 +3,8 @@
 import { ConvertUrlToMarkdownGetEntity } from './entity/ConvertUrlToMarkdownGetEntity'
 import { ConvertUrlToMarkdownPostEntity } from './entity/ConvertUrlToMarkdownPostEntity'
 
+export type * from './WebPageToMarkdownTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -203,12 +205,28 @@ class WebPageToMarkdownSDK {
 
 
 
+  _convert_url_to_markdown_get?: ConvertUrlToMarkdownGetEntity
+
+  // Idiomatic facade: `client.convert_url_to_markdown_get.list()` / `client.convert_url_to_markdown_get.load({ id })`.
+  get convert_url_to_markdown_get(): ConvertUrlToMarkdownGetEntity {
+    return (this._convert_url_to_markdown_get ??= new ConvertUrlToMarkdownGetEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.convert_url_to_markdown_get` instead. */
   ConvertUrlToMarkdownGet(data?: any) {
     const self = this
     return new ConvertUrlToMarkdownGetEntity(self,data)
   }
 
 
+  _convert_url_to_markdown_post?: ConvertUrlToMarkdownPostEntity
+
+  // Idiomatic facade: `client.convert_url_to_markdown_post.list()` / `client.convert_url_to_markdown_post.load({ id })`.
+  get convert_url_to_markdown_post(): ConvertUrlToMarkdownPostEntity {
+    return (this._convert_url_to_markdown_post ??= new ConvertUrlToMarkdownPostEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.convert_url_to_markdown_post` instead. */
   ConvertUrlToMarkdownPost(data?: any) {
     const self = this
     return new ConvertUrlToMarkdownPostEntity(self,data)

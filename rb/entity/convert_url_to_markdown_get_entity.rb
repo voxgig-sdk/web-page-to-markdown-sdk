@@ -45,6 +45,7 @@ class ConvertUrlToMarkdownGetEntity
     end
   end
 
+  # @return [ConvertUrlToMarkdownGet, Hash] the current ConvertUrlToMarkdownGet data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class ConvertUrlToMarkdownGetEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of ConvertUrlToMarkdownGet fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single ConvertUrlToMarkdownGet.
+  #
+  # @param reqmatch [ConvertUrlToMarkdownGetLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [ConvertUrlToMarkdownGet, Hash] the loaded ConvertUrlToMarkdownGet; raises WebPageToMarkdownError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

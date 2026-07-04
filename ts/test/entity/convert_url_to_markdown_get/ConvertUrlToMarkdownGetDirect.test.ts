@@ -78,14 +78,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'WEBPAGETOMARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID': {},
     'WEBPAGETOMARKDOWN_TEST_LIVE': 'FALSE',
-    'WEBPAGETOMARKDOWN_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.WEBPAGETOMARKDOWN_TEST_LIVE
 
   if (live) {
     const client = new WebPageToMarkdownSDK({
-      apikey: env.WEBPAGETOMARKDOWN_APIKEY,
     })
 
     let idmap: any = env['WEBPAGETOMARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID']

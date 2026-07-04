@@ -43,8 +43,7 @@ class ConvertUrlToMarkdownPostEntityTest extends TestCase
         $convert_url_to_markdown_post_ref01_data = Helpers::to_map(Vs::getprop(
             Vs::getpath($setup["data"], "new.convert_url_to_markdown_post"), "convert_url_to_markdown_post_ref01"));
 
-        [$convert_url_to_markdown_post_ref01_data_result, $err] = $convert_url_to_markdown_post_ref01_ent->create($convert_url_to_markdown_post_ref01_data, null);
-        $this->assertNull($err);
+        $convert_url_to_markdown_post_ref01_data_result = $convert_url_to_markdown_post_ref01_ent->create($convert_url_to_markdown_post_ref01_data, null);
         $convert_url_to_markdown_post_ref01_data = Helpers::to_map($convert_url_to_markdown_post_ref01_data_result);
         $this->assertNotNull($convert_url_to_markdown_post_ref01_data);
 
@@ -80,7 +79,6 @@ function convert_url_to_markdown_post_basic_setup($extra)
         "WEBPAGETOMARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_POST_ENTID" => $idmap,
         "WEBPAGETOMARKDOWN_TEST_LIVE" => "FALSE",
         "WEBPAGETOMARKDOWN_TEST_EXPLAIN" => "FALSE",
-        "WEBPAGETOMARKDOWN_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -92,7 +90,6 @@ function convert_url_to_markdown_post_basic_setup($extra)
     if ($env["WEBPAGETOMARKDOWN_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["WEBPAGETOMARKDOWN_APIKEY"],
             ],
             $extra ?? [],
         ]);

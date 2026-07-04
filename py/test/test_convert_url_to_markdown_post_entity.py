@@ -44,9 +44,7 @@ class TestConvertUrlToMarkdownPostEntity:
         convert_url_to_markdown_post_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.convert_url_to_markdown_post"), "convert_url_to_markdown_post_ref01"))
 
-        convert_url_to_markdown_post_ref01_data_result, err = convert_url_to_markdown_post_ref01_ent.create(convert_url_to_markdown_post_ref01_data, None)
-        assert err is None
-        convert_url_to_markdown_post_ref01_data = helpers.to_map(convert_url_to_markdown_post_ref01_data_result)
+        convert_url_to_markdown_post_ref01_data = helpers.to_map(convert_url_to_markdown_post_ref01_ent.create(convert_url_to_markdown_post_ref01_data, None))
         assert convert_url_to_markdown_post_ref01_data is not None
 
 
@@ -87,7 +85,6 @@ def _convert_url_to_markdown_post_basic_setup(extra):
         "WEBPAGETOMARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_POST_ENTID": idmap,
         "WEBPAGETOMARKDOWN_TEST_LIVE": "FALSE",
         "WEBPAGETOMARKDOWN_TEST_EXPLAIN": "FALSE",
-        "WEBPAGETOMARKDOWN_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -98,7 +95,6 @@ def _convert_url_to_markdown_post_basic_setup(extra):
     if env.get("WEBPAGETOMARKDOWN_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("WEBPAGETOMARKDOWN_APIKEY"),
             },
             extra or {},
         ])

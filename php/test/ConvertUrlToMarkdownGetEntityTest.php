@@ -49,8 +49,7 @@ class ConvertUrlToMarkdownGetEntityTest extends TestCase
         // LOAD
         $convert_url_to_markdown_get_ref01_ent = $client->ConvertUrlToMarkdownGet(null);
         $convert_url_to_markdown_get_ref01_match_dt0 = [];
-        [$convert_url_to_markdown_get_ref01_data_dt0_loaded, $err] = $convert_url_to_markdown_get_ref01_ent->load($convert_url_to_markdown_get_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $convert_url_to_markdown_get_ref01_data_dt0_loaded = $convert_url_to_markdown_get_ref01_ent->load($convert_url_to_markdown_get_ref01_match_dt0, null);
         $this->assertNotNull($convert_url_to_markdown_get_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function convert_url_to_markdown_get_basic_setup($extra)
         "WEBPAGETOMARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID" => $idmap,
         "WEBPAGETOMARKDOWN_TEST_LIVE" => "FALSE",
         "WEBPAGETOMARKDOWN_TEST_EXPLAIN" => "FALSE",
-        "WEBPAGETOMARKDOWN_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function convert_url_to_markdown_get_basic_setup($extra)
     if ($env["WEBPAGETOMARKDOWN_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["WEBPAGETOMARKDOWN_APIKEY"],
             ],
             $extra ?? [],
         ]);

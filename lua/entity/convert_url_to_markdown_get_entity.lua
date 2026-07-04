@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch ConvertUrlToMarkdownGetLoadMatch
+---@param ctrl? table
+---@return ConvertUrlToMarkdownGet
+---@return string? err
 function ConvertUrlToMarkdownGetEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

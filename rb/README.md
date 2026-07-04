@@ -32,8 +32,9 @@ client = WebPageToMarkdownSDK.new
 
 ```ruby
 begin
-  result = client.converturltomarkdownget.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare ConvertUrlToMarkdownGet record (raises on error).
+  converturltomarkdownget = client.ConvertUrlToMarkdownGet.load({ "id" => "example_id" })
+  puts converturltomarkdownget
 rescue => err
   warn "load failed: #{err}"
 end
@@ -80,13 +81,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = WebPageToMarkdownSDK.test
+client = WebPageToMarkdownSDK.test({
+  "entity" => { "converturltomarkdownget" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.converturltomarkdownget.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+converturltomarkdownget = client.ConvertUrlToMarkdownGet.load({ "id" => "test01" })
+puts converturltomarkdownget
 ```
 
 ### Use a custom fetch function
@@ -227,7 +232,7 @@ API path: `/`
 
 ### ConvertUrlToMarkdownGet
 
-Create an instance: `const convert_url_to_markdown_get = client.convert_url_to_markdown_get`
+Create an instance: `convert_url_to_markdown_get = client.ConvertUrlToMarkdownGet`
 
 #### Operations
 
@@ -237,14 +242,15 @@ Create an instance: `const convert_url_to_markdown_get = client.convert_url_to_m
 
 #### Example: Load
 
-```ts
-const convert_url_to_markdown_get = await client.convert_url_to_markdown_get.load({ id: 'convert_url_to_markdown_get_id' })
+```ruby
+# load returns the bare ConvertUrlToMarkdownGet record (raises on error).
+convert_url_to_markdown_get = client.ConvertUrlToMarkdownGet.load({ "id" => "convert_url_to_markdown_get_id" })
 ```
 
 
 ### ConvertUrlToMarkdownPost
 
-Create an instance: `const convert_url_to_markdown_post = client.convert_url_to_markdown_post`
+Create an instance: `convert_url_to_markdown_post = client.ConvertUrlToMarkdownPost`
 
 #### Operations
 
@@ -254,8 +260,8 @@ Create an instance: `const convert_url_to_markdown_post = client.convert_url_to_
 
 #### Example: Create
 
-```ts
-const convert_url_to_markdown_post = await client.convert_url_to_markdown_post.create({
+```ruby
+convert_url_to_markdown_post = client.ConvertUrlToMarkdownPost.create({
 })
 ```
 
@@ -331,7 +337,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-converturltomarkdownget = client.converturltomarkdownget
+converturltomarkdownget = client.ConvertUrlToMarkdownGet
 converturltomarkdownget.load({ "id" => "example_id" })
 
 # converturltomarkdownget.data_get now returns the loaded converturltomarkdownget data

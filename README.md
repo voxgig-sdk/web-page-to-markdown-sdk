@@ -26,9 +26,9 @@ import { WebPageToMarkdownSDK } from '@voxgig-sdk/web-page-to-markdown'
 
 const client = new WebPageToMarkdownSDK()
 
-// Load converturltomarkdownget data
-const converturltomarkdownget = await client.converturltomarkdownget.load({})
-console.log(converturltomarkdownget.data)
+// Load converturltomarkdownget data (returns a ConvertUrlToMarkdownGet)
+const converturltomarkdownget = await client.ConvertUrlToMarkdownGet().load()
+console.log(converturltomarkdownget)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -85,8 +85,8 @@ from webpagetomarkdown_sdk import WebPageToMarkdownSDK
 client = WebPageToMarkdownSDK()
 
 
-# Load a specific converturltomarkdownget
-converturltomarkdownget = client.converturltomarkdownget.load({"id": "example_id"})
+# Load a specific converturltomarkdownget (returns the record, raises on error)
+converturltomarkdownget = client.ConvertUrlToMarkdownGet().load({"id": "example_id"})
 print(converturltomarkdownget)
 ```
 
@@ -99,8 +99,8 @@ require_once 'webpagetomarkdown_sdk.php';
 $client = new WebPageToMarkdownSDK();
 
 
-// Load a specific converturltomarkdownget
-$converturltomarkdownget = $client->converturltomarkdownget()->load(["id" => "example_id"]);
+// Load a specific converturltomarkdownget (returns the bare record; throws on error)
+$converturltomarkdownget = $client->ConvertUrlToMarkdownGet()->load(["id" => "example_id"]);
 print_r($converturltomarkdownget);
 ```
 
@@ -124,8 +124,8 @@ require_relative "WebPageToMarkdown_sdk"
 client = WebPageToMarkdownSDK.new
 
 
-# Load a specific converturltomarkdownget
-converturltomarkdownget = client.converturltomarkdownget.load({ "id" => "example_id" })
+# Load a specific converturltomarkdownget (returns the bare record; raises on error)
+converturltomarkdownget = client.ConvertUrlToMarkdownGet.load({ "id" => "example_id" })
 puts converturltomarkdownget
 ```
 
@@ -138,7 +138,7 @@ local client = sdk.new()
 
 
 -- Load a specific converturltomarkdownget
-local converturltomarkdownget, err = client:converturltomarkdownget():load({ id = "example_id" })
+local converturltomarkdownget, err = client:ConvertUrlToMarkdownGet():load({ id = "example_id" })
 print(converturltomarkdownget)
 ```
 
@@ -151,22 +151,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = WebPageToMarkdownSDK.test()
-const result = await client.converturltomarkdownget.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const converturltomarkdownget = await client.ConvertUrlToMarkdownGet().load({ id: 'test01' })
+// converturltomarkdownget is a bare ConvertUrlToMarkdownGet populated with mock data
+console.log(converturltomarkdownget)
 ```
 
 ### Python
 
 ```python
 client = WebPageToMarkdownSDK.test()
-result = client.converturltomarkdownget.load({"id": "test01"})
+converturltomarkdownget = client.ConvertUrlToMarkdownGet().load({"id": "test01"})
+print(converturltomarkdownget)
 ```
 
 ### PHP
 
 ```php
-$client = WebPageToMarkdownSDK::test();
-$result = $client->converturltomarkdownget()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = WebPageToMarkdownSDK::test([
+    "entity" => ["converturltomarkdownget" => ["test01" => ["id" => "test01"]]],
+]);
+$converturltomarkdownget = $client->ConvertUrlToMarkdownGet()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -181,15 +186,18 @@ result, err := client.ConvertUrlToMarkdownGet(nil).Load(
 ### Ruby
 
 ```ruby
-client = WebPageToMarkdownSDK.test
-result = client.converturltomarkdownget.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = WebPageToMarkdownSDK.test({
+  "entity" => { "converturltomarkdownget" => { "test01" => { "id" => "test01" } } },
+})
+converturltomarkdownget = client.ConvertUrlToMarkdownGet.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:converturltomarkdownget():load({ id = "test01" })
+local result, err = client:ConvertUrlToMarkdownGet():load({ id = "test01" })
 ```
 
 ## How it works
@@ -237,6 +245,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

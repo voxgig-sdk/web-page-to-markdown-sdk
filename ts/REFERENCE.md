@@ -121,7 +121,7 @@ Alias for `WebPageToMarkdownSDK.test()`.
 ## ConvertUrlToMarkdownGetEntity
 
 ```ts
-const convert_url_to_markdown_get = client.convert_url_to_markdown_get
+const convert_url_to_markdown_get = client.ConvertUrlToMarkdownGet()
 ```
 
 ### Operations
@@ -131,7 +131,7 @@ const convert_url_to_markdown_get = client.convert_url_to_markdown_get
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.convert_url_to_markdown_get.load({ id: 'convert_url_to_markdown_get_id' })
+const result = await client.ConvertUrlToMarkdownGet().load({ id: 'convert_url_to_markdown_get_id' })
 ```
 
 ### Common Methods
@@ -165,7 +165,7 @@ Return a copy of the entity options.
 ## ConvertUrlToMarkdownPostEntity
 
 ```ts
-const convert_url_to_markdown_post = client.convert_url_to_markdown_post
+const convert_url_to_markdown_post = client.ConvertUrlToMarkdownPost()
 ```
 
 ### Operations
@@ -175,7 +175,7 @@ const convert_url_to_markdown_post = client.convert_url_to_markdown_post
 Create a new entity with the given data.
 
 ```ts
-const result = await client.convert_url_to_markdown_post.create({
+const result = await client.ConvertUrlToMarkdownPost().create({
 })
 ```
 

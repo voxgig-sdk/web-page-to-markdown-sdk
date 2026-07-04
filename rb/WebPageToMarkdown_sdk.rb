@@ -208,26 +208,14 @@ class WebPageToMarkdownSDK
   end
 
 
-  # Idiomatic facade: client.convert_url_to_markdown_get.list / client.convert_url_to_markdown_get.load({ "id" => ... })
-  def convert_url_to_markdown_get
-    require_relative 'entity/convert_url_to_markdown_get_entity'
-    @convert_url_to_markdown_get ||= ConvertUrlToMarkdownGetEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.convert_url_to_markdown_get instead.
+  # Canonical facade: client.ConvertUrlToMarkdownGet.list / client.ConvertUrlToMarkdownGet.load({ "id" => ... })
   def ConvertUrlToMarkdownGet(data = nil)
     require_relative 'entity/convert_url_to_markdown_get_entity'
     ConvertUrlToMarkdownGetEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.convert_url_to_markdown_post.list / client.convert_url_to_markdown_post.load({ "id" => ... })
-  def convert_url_to_markdown_post
-    require_relative 'entity/convert_url_to_markdown_post_entity'
-    @convert_url_to_markdown_post ||= ConvertUrlToMarkdownPostEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.convert_url_to_markdown_post instead.
+  # Canonical facade: client.ConvertUrlToMarkdownPost.list / client.ConvertUrlToMarkdownPost.load({ "id" => ... })
   def ConvertUrlToMarkdownPost(data = nil)
     require_relative 'entity/convert_url_to_markdown_post_entity'
     ConvertUrlToMarkdownPostEntity.new(self, data)

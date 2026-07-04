@@ -90,7 +90,7 @@ same parameters as `direct()`. Raises on error.
 ## ConvertUrlToMarkdownGetEntity
 
 ```ruby
-convert_url_to_markdown_get = client.convert_url_to_markdown_get
+convert_url_to_markdown_get = client.ConvertUrlToMarkdownGet
 ```
 
 ### Operations
@@ -100,7 +100,7 @@ convert_url_to_markdown_get = client.convert_url_to_markdown_get
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.convert_url_to_markdown_get.load({ "id" => "convert_url_to_markdown_get_id" })
+result = client.ConvertUrlToMarkdownGet.load({ "id" => "convert_url_to_markdown_get_id" })
 ```
 
 ### Common Methods
@@ -136,7 +136,7 @@ Return the entity name.
 ## ConvertUrlToMarkdownPostEntity
 
 ```ruby
-convert_url_to_markdown_post = client.convert_url_to_markdown_post
+convert_url_to_markdown_post = client.ConvertUrlToMarkdownPost
 ```
 
 ### Operations
@@ -146,7 +146,7 @@ convert_url_to_markdown_post = client.convert_url_to_markdown_post
 Create a new entity with the given data. Raises on error.
 
 ```ruby
-result = client.convert_url_to_markdown_post.create({
+result = client.ConvertUrlToMarkdownPost.create({
 })
 ```
 

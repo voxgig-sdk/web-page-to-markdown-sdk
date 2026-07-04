@@ -220,41 +220,21 @@ class WebPageToMarkdownSDK:
         }
 
 
-    @property
-    def convert_url_to_markdown_get(self):
-        """Idiomatic facade: client.convert_url_to_markdown_get.list() / client.convert_url_to_markdown_get.load({"id": ...})."""
-        from entity.convert_url_to_markdown_get_entity import ConvertUrlToMarkdownGetEntity
-        cached = getattr(self, "_convert_url_to_markdown_get", None)
-        if cached is None:
-            cached = ConvertUrlToMarkdownGetEntity(self, None)
-            self._convert_url_to_markdown_get = cached
-        return cached
-
-    def ConvertUrlToMarkdownGet(self, data=None):
-        # Deprecated: use client.convert_url_to_markdown_get instead.
+    def ConvertUrlToMarkdownGet(self, data=None) -> "ConvertUrlToMarkdownGetEntity":
+        """Entity factory: client.ConvertUrlToMarkdownGet().list({}) / client.ConvertUrlToMarkdownGet().load({"id": ...})."""
         from entity.convert_url_to_markdown_get_entity import ConvertUrlToMarkdownGetEntity
         return ConvertUrlToMarkdownGetEntity(self, data)
 
 
-    @property
-    def convert_url_to_markdown_post(self):
-        """Idiomatic facade: client.convert_url_to_markdown_post.list() / client.convert_url_to_markdown_post.load({"id": ...})."""
-        from entity.convert_url_to_markdown_post_entity import ConvertUrlToMarkdownPostEntity
-        cached = getattr(self, "_convert_url_to_markdown_post", None)
-        if cached is None:
-            cached = ConvertUrlToMarkdownPostEntity(self, None)
-            self._convert_url_to_markdown_post = cached
-        return cached
-
-    def ConvertUrlToMarkdownPost(self, data=None):
-        # Deprecated: use client.convert_url_to_markdown_post instead.
+    def ConvertUrlToMarkdownPost(self, data=None) -> "ConvertUrlToMarkdownPostEntity":
+        """Entity factory: client.ConvertUrlToMarkdownPost().list({}) / client.ConvertUrlToMarkdownPost().load({"id": ...})."""
         from entity.convert_url_to_markdown_post_entity import ConvertUrlToMarkdownPostEntity
         return ConvertUrlToMarkdownPostEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "WebPageToMarkdownSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -274,3 +254,10 @@ class WebPageToMarkdownSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.convert_url_to_markdown_get_entity import ConvertUrlToMarkdownGetEntity
+    from entity.convert_url_to_markdown_post_entity import ConvertUrlToMarkdownPostEntity

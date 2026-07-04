@@ -34,9 +34,9 @@ local client = sdk.new()
 ### 3. Load a converturltomarkdownget
 
 ```lua
-local result, err = client:converturltomarkdownget():load({ id = "example_id" })
+local converturltomarkdownget, err = client:ConvertUrlToMarkdownGet():load({ id = "example_id" })
 if err then error(err) end
-print(result)
+print(converturltomarkdownget)
 ```
 
 
@@ -82,8 +82,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:converturltomarkdownget():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:ConvertUrlToMarkdownGet():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -184,17 +184,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local convert_url_to_markdown_get, err = client:ConvertUrlToMarkdownGet():load({ id = "example_id" })
+    if err then error(err) end
+    -- convert_url_to_markdown_get is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -223,7 +228,7 @@ API path: `/`
 
 ### ConvertUrlToMarkdownGet
 
-Create an instance: `const convert_url_to_markdown_get = client.convert_url_to_markdown_get`
+Create an instance: `local convert_url_to_markdown_get = client:ConvertUrlToMarkdownGet(nil)`
 
 #### Operations
 
@@ -233,14 +238,14 @@ Create an instance: `const convert_url_to_markdown_get = client.convert_url_to_m
 
 #### Example: Load
 
-```ts
-const convert_url_to_markdown_get = await client.convert_url_to_markdown_get.load({ id: 'convert_url_to_markdown_get_id' })
+```lua
+local convert_url_to_markdown_get, err = client:ConvertUrlToMarkdownGet():load({ id = "convert_url_to_markdown_get_id" })
 ```
 
 
 ### ConvertUrlToMarkdownPost
 
-Create an instance: `const convert_url_to_markdown_post = client.convert_url_to_markdown_post`
+Create an instance: `local convert_url_to_markdown_post = client:ConvertUrlToMarkdownPost(nil)`
 
 #### Operations
 
@@ -250,8 +255,8 @@ Create an instance: `const convert_url_to_markdown_post = client.convert_url_to_
 
 #### Example: Create
 
-```ts
-const convert_url_to_markdown_post = await client.convert_url_to_markdown_post.create({
+```lua
+local convert_url_to_markdown_post, err = client:ConvertUrlToMarkdownPost():create({
 })
 ```
 
@@ -327,7 +332,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local converturltomarkdownget = client:converturltomarkdownget()
+local converturltomarkdownget = client:ConvertUrlToMarkdownGet()
 converturltomarkdownget:load({ id = "example_id" })
 
 -- converturltomarkdownget:data_get() now returns the loaded converturltomarkdownget data

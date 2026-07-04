@@ -233,10 +233,10 @@ class WebPageToMarkdownSDK
 
     private $_convert_url_to_markdown_get = null;
 
-    // Idiomatic facade: $client->convert_url_to_markdown_get()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias ConvertUrlToMarkdownGet() (PHP method
-    // names are case-insensitive).
-    public function convert_url_to_markdown_get($data = null)
+    // Canonical facade: $client->ConvertUrlToMarkdownGet()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->convert_url_to_markdown_get()
+    // resolves here too.
+    public function ConvertUrlToMarkdownGet($data = null)
     {
         require_once __DIR__ . '/entity/convert_url_to_markdown_get_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class WebPageToMarkdownSDK
 
     private $_convert_url_to_markdown_post = null;
 
-    // Idiomatic facade: $client->convert_url_to_markdown_post()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias ConvertUrlToMarkdownPost() (PHP method
-    // names are case-insensitive).
-    public function convert_url_to_markdown_post($data = null)
+    // Canonical facade: $client->ConvertUrlToMarkdownPost()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->convert_url_to_markdown_post()
+    // resolves here too.
+    public function ConvertUrlToMarkdownPost($data = null)
     {
         require_once __DIR__ . '/entity/convert_url_to_markdown_post_entity.php';
         if ($data === null) {

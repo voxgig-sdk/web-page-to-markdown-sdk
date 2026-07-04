@@ -33,9 +33,10 @@ $client = new WebPageToMarkdownSDK();
 
 ```php
 try {
-    $result = $client->converturltomarkdownget()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare ConvertUrlToMarkdownGet record (throws on error).
+    $converturltomarkdownget = $client->ConvertUrlToMarkdownGet()->load(["id" => "example_id"]);
+    print_r($converturltomarkdownget);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -81,13 +82,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = WebPageToMarkdownSDK::test();
+$client = WebPageToMarkdownSDK::test([
+    "entity" => ["converturltomarkdownget" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->converturltomarkdownget()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$converturltomarkdownget = $client->ConvertUrlToMarkdownGet()->load(["id" => "test01"]);
+print_r($converturltomarkdownget);
 ```
 
 ### Use a custom fetch function
@@ -232,7 +237,7 @@ API path: `/`
 
 ### ConvertUrlToMarkdownGet
 
-Create an instance: `const convert_url_to_markdown_get = client.convert_url_to_markdown_get`
+Create an instance: `$convert_url_to_markdown_get = $client->ConvertUrlToMarkdownGet();`
 
 #### Operations
 
@@ -242,14 +247,15 @@ Create an instance: `const convert_url_to_markdown_get = client.convert_url_to_m
 
 #### Example: Load
 
-```ts
-const convert_url_to_markdown_get = await client.convert_url_to_markdown_get.load({ id: 'convert_url_to_markdown_get_id' })
+```php
+// load() returns the bare ConvertUrlToMarkdownGet record (throws on error).
+$convert_url_to_markdown_get = $client->ConvertUrlToMarkdownGet()->load(["id" => "convert_url_to_markdown_get_id"]);
 ```
 
 
 ### ConvertUrlToMarkdownPost
 
-Create an instance: `const convert_url_to_markdown_post = client.convert_url_to_markdown_post`
+Create an instance: `$convert_url_to_markdown_post = $client->ConvertUrlToMarkdownPost();`
 
 #### Operations
 
@@ -259,9 +265,9 @@ Create an instance: `const convert_url_to_markdown_post = client.convert_url_to_
 
 #### Example: Create
 
-```ts
-const convert_url_to_markdown_post = await client.convert_url_to_markdown_post.create({
-})
+```php
+$convert_url_to_markdown_post = $client->ConvertUrlToMarkdownPost()->create([
+]);
 ```
 
 
@@ -336,7 +342,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$converturltomarkdownget = $client->converturltomarkdownget();
+$converturltomarkdownget = $client->ConvertUrlToMarkdownGet();
 $converturltomarkdownget->load(["id" => "example_id"]);
 
 // $converturltomarkdownget->dataGet() now returns the loaded converturltomarkdownget data

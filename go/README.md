@@ -30,36 +30,30 @@ go mod edit -replace github.com/voxgig-sdk/web-page-to-markdown-sdk/go=../web-pa
 This tutorial walks through creating a client, listing entities, and
 loading a specific record.
 
-### 1. Create a client
+### Quickstart
+
+A complete program: create a client, then call the entity operations.
+Each operation returns `(value, error)` — the value is the data itself
+(there is no `{ok, data}` wrapper), so check `err` and use the value
+directly.
 
 ```go
 package main
 
 import (
     "fmt"
-
     sdk "github.com/voxgig-sdk/web-page-to-markdown-sdk/go"
-    "github.com/voxgig-sdk/web-page-to-markdown-sdk/go/core"
 )
 
 func main() {
     client := sdk.New()
-```
 
-### 3. Load a converturltomarkdownget
-
-```go
-    result, err = client.ConvertUrlToMarkdownGet(nil).Load(
-        map[string]any{"id": "example_id"}, nil,
-    )
+    // Load a single converturltomarkdownget — the value is the loaded record.
+    converturltomarkdownget, err := client.ConvertUrlToMarkdownGet(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }
-
-    rm = core.ToMapAny(result)
-    if rm["ok"] == true {
-        fmt.Println(rm["data"])
-    }
+    fmt.Println(converturltomarkdownget)
 }
 ```
 
@@ -110,10 +104,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-result, err := client.ConvertUrlToMarkdownGet(nil).Load(
+converturltomarkdownget, err := client.ConvertUrlToMarkdownGet(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
-// result contains mock response data
+if err != nil {
+    panic(err)
+}
+fmt.Println(converturltomarkdownget) // the loaded mock data
 ```
 
 ### Use a custom fetch function
@@ -211,17 +208,24 @@ All entities implement the `WebPageToMarkdownEntity` interface.
 
 ### Result shape
 
-Entity operations return `(any, error)`. The `any` value is a
-`map[string]any` with these keys:
+Entity operations return `(value, error)`. The `value` is the
+operation's data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `"ok"` | `bool` | `true` if the HTTP status is 2xx. |
-| `"status"` | `int` | HTTP status code. |
-| `"headers"` | `map[string]any` | Response headers. |
-| `"data"` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `List` | a `[]any` of entity records |
 
-On error, `"ok"` is `false` and `"err"` contains the error value.
+Check `err` first, then use the value directly (or the typed
+`...Typed` variants, which return the entity's model struct and a typed
+slice):
+
+    converturltomarkdownget, err := client.ConvertUrlToMarkdownGet(nil).Load(map[string]any{"id": "example_id"}, nil)
+    if err != nil { /* handle */ }
+    // converturltomarkdownget is the loaded record
+
+Only `Direct()` returns a response envelope — a `map[string]any` with
+`"ok"`, `"status"`, `"headers"`, and `"data"` keys.
 
 ### Entities
 
@@ -261,7 +265,11 @@ Create an instance: `convert_url_to_markdown_get := client.ConvertUrlToMarkdownG
 #### Example: Load
 
 ```go
-result, err := client.ConvertUrlToMarkdownGet(nil).Load(map[string]any{"id": "convert_url_to_markdown_get_id"}, nil)
+convert_url_to_markdown_get, err := client.ConvertUrlToMarkdownGet(nil).Load(map[string]any{"id": "convert_url_to_markdown_get_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(convert_url_to_markdown_get) // the loaded record
 ```
 
 

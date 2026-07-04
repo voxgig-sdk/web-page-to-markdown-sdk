@@ -89,7 +89,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## ConvertUrlToMarkdownGetEntity
 
 ```php
-$convert_url_to_markdown_get = $client->convert_url_to_markdown_get();
+$convert_url_to_markdown_get = $client->ConvertUrlToMarkdownGet();
 ```
 
 ### Operations
@@ -99,7 +99,7 @@ $convert_url_to_markdown_get = $client->convert_url_to_markdown_get();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->convert_url_to_markdown_get()->load(["id" => "convert_url_to_markdown_get_id"]);
+$result = $client->ConvertUrlToMarkdownGet()->load(["id" => "convert_url_to_markdown_get_id"]);
 ```
 
 ### Common Methods
@@ -135,7 +135,7 @@ Return the entity name.
 ## ConvertUrlToMarkdownPostEntity
 
 ```php
-$convert_url_to_markdown_post = $client->convert_url_to_markdown_post();
+$convert_url_to_markdown_post = $client->ConvertUrlToMarkdownPost();
 ```
 
 ### Operations
@@ -145,7 +145,7 @@ $convert_url_to_markdown_post = $client->convert_url_to_markdown_post();
 Create a new entity with the given data. Throws on error.
 
 ```php
-$result = $client->convert_url_to_markdown_post()->create([
+$result = $client->ConvertUrlToMarkdownPost()->create([
 ]);
 ```
 

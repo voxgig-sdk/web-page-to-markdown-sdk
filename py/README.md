@@ -33,10 +33,12 @@ client = WebPageToMarkdownSDK()
 
 ### 3. Load a converturltomarkdownget
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.converturltomarkdownget.load({"id": "example_id"})
-    print(result)
+    converturltomarkdownget = client.ConvertUrlToMarkdownGet().load({"id": "example_id"})
+    print(converturltomarkdownget)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -84,8 +86,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = WebPageToMarkdownSDK.test()
 
-result = client.converturltomarkdownget.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+converturltomarkdownget = client.ConvertUrlToMarkdownGet().load({"id": "test01"})
+# converturltomarkdownget contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -227,7 +230,7 @@ API path: `/`
 
 ### ConvertUrlToMarkdownGet
 
-Create an instance: `const convert_url_to_markdown_get = client.convert_url_to_markdown_get`
+Create an instance: `convert_url_to_markdown_get = client.ConvertUrlToMarkdownGet()`
 
 #### Operations
 
@@ -237,14 +240,14 @@ Create an instance: `const convert_url_to_markdown_get = client.convert_url_to_m
 
 #### Example: Load
 
-```ts
-const convert_url_to_markdown_get = await client.convert_url_to_markdown_get.load({ id: 'convert_url_to_markdown_get_id' })
+```python
+convert_url_to_markdown_get = client.ConvertUrlToMarkdownGet().load({"id": "convert_url_to_markdown_get_id"})
 ```
 
 
 ### ConvertUrlToMarkdownPost
 
-Create an instance: `const convert_url_to_markdown_post = client.convert_url_to_markdown_post`
+Create an instance: `convert_url_to_markdown_post = client.ConvertUrlToMarkdownPost()`
 
 #### Operations
 
@@ -254,8 +257,8 @@ Create an instance: `const convert_url_to_markdown_post = client.convert_url_to_
 
 #### Example: Create
 
-```ts
-const convert_url_to_markdown_post = await client.convert_url_to_markdown_post.create({
+```python
+convert_url_to_markdown_post = client.ConvertUrlToMarkdownPost().create({
 })
 ```
 
@@ -330,7 +333,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-converturltomarkdownget = client.converturltomarkdownget
+converturltomarkdownget = client.ConvertUrlToMarkdownGet()
 converturltomarkdownget.load({"id": "example_id"})
 
 # converturltomarkdownget.data_get() now returns the loaded converturltomarkdownget data

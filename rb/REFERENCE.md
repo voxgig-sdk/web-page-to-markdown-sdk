@@ -8,7 +8,7 @@ Complete API reference for the WebPageToMarkdown Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'web-page-to-markdown_sdk'
+require_relative 'WebPageToMarkdown_sdk'
 
 client = WebPageToMarkdownSDK.new(options)
 ```
@@ -100,7 +100,7 @@ convert_url_to_markdown_get = client.ConvertUrlToMarkdownGet
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.ConvertUrlToMarkdownGet.load({ "id" => "convert_url_to_markdown_get_id" })
+result = client.ConvertUrlToMarkdownGet.load()
 ```
 
 ### Common Methods

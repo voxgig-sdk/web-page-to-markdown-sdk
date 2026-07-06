@@ -8,7 +8,7 @@ Complete API reference for the WebPageToMarkdown Python SDK.
 ### Constructor
 
 ```python
-from web-page-to-markdown_sdk import WebPageToMarkdownSDK
+from webpagetomarkdown_sdk import WebPageToMarkdownSDK
 
 client = WebPageToMarkdownSDK(options)
 ```
@@ -94,7 +94,7 @@ convert_url_to_markdown_get = client.ConvertUrlToMarkdownGet()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.ConvertUrlToMarkdownGet().load({"id": "convert_url_to_markdown_get_id"})
+result = client.ConvertUrlToMarkdownGet().load()
 ```
 
 ### Common Methods

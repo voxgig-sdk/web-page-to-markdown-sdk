@@ -67,10 +67,12 @@ class ConvertUrlToMarkdownGetEntity
   
   # Load a single ConvertUrlToMarkdownGet.
   #
-  # @param reqmatch [ConvertUrlToMarkdownGetLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param reqmatch [ConvertUrlToMarkdownGetLoadMatch, Hash, nil] match criteria (id/query fields);
+  #   optional — an entity with no id-like key loads with no match (nil is treated
+  #   as an empty match, so client.ConvertUrlToMarkdownGet.load works with no args).
   # @param ctrl [Object, nil] optional per-call control
   # @return [ConvertUrlToMarkdownGet, Hash] the loaded ConvertUrlToMarkdownGet; raises WebPageToMarkdownError on failure
-  def load(reqmatch, ctrl = nil)
+  def load(reqmatch = nil, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
       "opname" => "load",

@@ -221,13 +221,13 @@ class WebPageToMarkdownSDK:
 
 
     def ConvertUrlToMarkdownGet(self, data=None) -> "ConvertUrlToMarkdownGetEntity":
-        """Entity factory: client.ConvertUrlToMarkdownGet().list({}) / client.ConvertUrlToMarkdownGet().load({"id": ...})."""
+        """Entity factory: client.ConvertUrlToMarkdownGet().list() / client.ConvertUrlToMarkdownGet().load({"id": ...})."""
         from entity.convert_url_to_markdown_get_entity import ConvertUrlToMarkdownGetEntity
         return ConvertUrlToMarkdownGetEntity(self, data)
 
 
     def ConvertUrlToMarkdownPost(self, data=None) -> "ConvertUrlToMarkdownPostEntity":
-        """Entity factory: client.ConvertUrlToMarkdownPost().list({}) / client.ConvertUrlToMarkdownPost().load({"id": ...})."""
+        """Entity factory: client.ConvertUrlToMarkdownPost().list() / client.ConvertUrlToMarkdownPost().load({"id": ...})."""
         from entity.convert_url_to_markdown_post_entity import ConvertUrlToMarkdownPostEntity
         return ConvertUrlToMarkdownPostEntity(self, data)
 

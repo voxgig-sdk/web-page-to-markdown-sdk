@@ -131,7 +131,7 @@ const convert_url_to_markdown_get = client.ConvertUrlToMarkdownGet()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ConvertUrlToMarkdownGet().load({ id: 'convert_url_to_markdown_get_id' })
+const result = await client.ConvertUrlToMarkdownGet().load()
 ```
 
 ### Common Methods

@@ -104,7 +104,7 @@ convert_url_to_markdown_get := client.ConvertUrlToMarkdownGet(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.ConvertUrlToMarkdownGet(nil).Load(map[string]any{"id": "convert_url_to_markdown_get_id"}, nil)
+result, err := client.ConvertUrlToMarkdownGet(nil).Load(nil, nil)
 ```
 
 ### Common Methods

@@ -8,7 +8,7 @@ Complete API reference for the WebPageToMarkdown PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/web-page-to-markdown_sdk.php';
+require_once __DIR__ . '/webpagetomarkdown_sdk.php';
 
 $client = new WebPageToMarkdownSDK($options);
 ```
@@ -49,11 +49,11 @@ Create a new `ConvertUrlToMarkdownGetEntity` instance. Pass `null` for no initia
 
 Create a new `ConvertUrlToMarkdownPostEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): WebPageToMarkdownUtility`
 
 Return a copy of the SDK utility object.
 
@@ -99,24 +99,24 @@ $convert_url_to_markdown_get = $client->ConvertUrlToMarkdownGet();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->ConvertUrlToMarkdownGet()->load(["id" => "convert_url_to_markdown_get_id"]);
+$result = $client->ConvertUrlToMarkdownGet()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -125,7 +125,7 @@ Set the entity match criteria.
 Create a new `ConvertUrlToMarkdownGetEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -151,19 +151,19 @@ $result = $client->ConvertUrlToMarkdownPost()->create([
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -172,7 +172,7 @@ Set the entity match criteria.
 Create a new `ConvertUrlToMarkdownPostEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

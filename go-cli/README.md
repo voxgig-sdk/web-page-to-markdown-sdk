@@ -16,7 +16,6 @@ go build -o web-page-to-markdown-cli ./...
 
 ```sh
 # One-shot: arguments form a single AQL expression
-./web-page-to-markdown-cli list convert_url_to_markdown_get
 ./web-page-to-markdown-cli load 1 convert_url_to_markdown_get
 ./web-page-to-markdown-cli load '{id:1}' convert_url_to_markdown_get
 
@@ -28,9 +27,7 @@ go build -o web-page-to-markdown-cli ./...
 
 | Word     | Signatures                                   | Description                |
 |----------|----------------------------------------------|----------------------------|
-| `list`   | `[entity]` · `[query entity]`                | List records               |
 | `load`   | `[entity]` · `[query entity]`                | Load a single record       |
-| `update` | `[entity]` · `[query entity]`                | Update a record            |
 
 `query` is either a Map (`{id:1}`) or a Scalar (`1`, treated as `{id:1}`).
 `entity` is one of the SDK's entity names (auto-quoted as an atom).

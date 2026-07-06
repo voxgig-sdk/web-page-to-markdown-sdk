@@ -17,7 +17,7 @@ class ConvertUrlToMarkdownGet
 {
 }
 
-/** Match filter for ConvertUrlToMarkdownGet#load (any subset of ConvertUrlToMarkdownGet fields). */
+/** Request payload for ConvertUrlToMarkdownGet#load. */
 class ConvertUrlToMarkdownGetLoadMatch
 {
 }
@@ -27,7 +27,7 @@ class ConvertUrlToMarkdownPost
 {
 }
 
-/** Match filter for ConvertUrlToMarkdownPost#create (any subset of ConvertUrlToMarkdownPost fields). */
+/** Request payload for ConvertUrlToMarkdownPost#create. */
 class ConvertUrlToMarkdownPostCreateData
 {
 }

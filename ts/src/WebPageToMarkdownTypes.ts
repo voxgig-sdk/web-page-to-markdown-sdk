@@ -8,10 +8,12 @@
 export interface ConvertUrlToMarkdownGet {
 }
 
-export type ConvertUrlToMarkdownGetLoadMatch = Partial<ConvertUrlToMarkdownGet>
+export interface ConvertUrlToMarkdownGetLoadMatch {
+}
 
 export interface ConvertUrlToMarkdownPost {
 }
 
-export type ConvertUrlToMarkdownPostCreateData = Partial<ConvertUrlToMarkdownPost>
+export interface ConvertUrlToMarkdownPostCreateData {
+}
 

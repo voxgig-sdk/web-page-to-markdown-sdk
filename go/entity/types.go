@@ -12,8 +12,7 @@ import "encoding/json"
 type ConvertUrlToMarkdownGet struct {
 }
 
-// ConvertUrlToMarkdownGetLoadMatch mirrors the convert_url_to_markdown_get fields as an all-optional match
-// filter (Go analog of Partial<ConvertUrlToMarkdownGet>).
+// ConvertUrlToMarkdownGetLoadMatch is the typed request payload for ConvertUrlToMarkdownGet.LoadTyped.
 type ConvertUrlToMarkdownGetLoadMatch struct {
 }
 
@@ -21,8 +20,7 @@ type ConvertUrlToMarkdownGetLoadMatch struct {
 type ConvertUrlToMarkdownPost struct {
 }
 
-// ConvertUrlToMarkdownPostCreateData mirrors the convert_url_to_markdown_post fields as an all-optional match
-// filter (Go analog of Partial<ConvertUrlToMarkdownPost>).
+// ConvertUrlToMarkdownPostCreateData is the typed request payload for ConvertUrlToMarkdownPost.CreateTyped.
 type ConvertUrlToMarkdownPostCreateData struct {
 }
 

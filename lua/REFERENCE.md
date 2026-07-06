@@ -97,7 +97,7 @@ local convert_url_to_markdown_get = client:ConvertUrlToMarkdownGet(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ConvertUrlToMarkdownGet():load({ id = "convert_url_to_markdown_get_id" })
+local result, err = client:ConvertUrlToMarkdownGet():load()
 ```
 
 ### Common Methods

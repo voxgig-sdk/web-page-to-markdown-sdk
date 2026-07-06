@@ -12,7 +12,7 @@
 class ConvertUrlToMarkdownGet
 end
 
-# Match filter for ConvertUrlToMarkdownGet#load (any subset of ConvertUrlToMarkdownGet fields).
+# Request payload for ConvertUrlToMarkdownGet#load.
 class ConvertUrlToMarkdownGetLoadMatch
 end
 
@@ -20,7 +20,7 @@ end
 class ConvertUrlToMarkdownPost
 end
 
-# Match filter for ConvertUrlToMarkdownPost#create (any subset of ConvertUrlToMarkdownPost fields).
+# Request payload for ConvertUrlToMarkdownPost#create.
 class ConvertUrlToMarkdownPostCreateData
 end
 

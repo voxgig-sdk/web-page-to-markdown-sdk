@@ -94,7 +94,8 @@ same parameters as `Direct()`.
 ## ConvertUrlToMarkdownGetEntity
 
 ```go
-convert_url_to_markdown_get := client.ConvertUrlToMarkdownGet(nil)
+convertUrlToMarkdownGet := client.ConvertUrlToMarkdownGet(nil)
+fmt.Println(convertUrlToMarkdownGet.GetName()) // "convert_url_to_markdown_get"
 ```
 
 ### Operations
@@ -105,6 +106,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.ConvertUrlToMarkdownGet(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -134,7 +139,8 @@ Return the entity name.
 ## ConvertUrlToMarkdownPostEntity
 
 ```go
-convert_url_to_markdown_post := client.ConvertUrlToMarkdownPost(nil)
+convertUrlToMarkdownPost := client.ConvertUrlToMarkdownPost(nil)
+fmt.Println(convertUrlToMarkdownPost.GetName()) // "convert_url_to_markdown_post"
 ```
 
 ### Operations
@@ -146,6 +152,10 @@ Create a new entity with the given data.
 ```go
 result, err := client.ConvertUrlToMarkdownPost(nil).Create(map[string]any{
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

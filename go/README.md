@@ -50,12 +50,12 @@ import (
 func main() {
     client := sdk.New()
 
-    // Load a single converturltomarkdownget — the value is the loaded record.
-    converturltomarkdownget, err := client.ConvertUrlToMarkdownGet(nil).Load(nil, nil)
+    // Load a single convertUrlToMarkdownGet — the value is the loaded record.
+    convertUrlToMarkdownGet, err := client.ConvertUrlToMarkdownGet(nil).Load(nil, nil)
     if err != nil {
         panic(err)
     }
-    fmt.Println(converturltomarkdownget)
+    fmt.Println(convertUrlToMarkdownGet)
 }
 ```
 
@@ -135,13 +135,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-converturltomarkdownget, err := client.ConvertUrlToMarkdownGet(nil).Load(
+convertUrlToMarkdownGet, err := client.ConvertUrlToMarkdownGet(nil).Load(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(converturltomarkdownget) // the returned mock data
+fmt.Println(convertUrlToMarkdownGet) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -247,9 +247,9 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    converturltomarkdownget, err := client.ConvertUrlToMarkdownGet(nil).Load(nil, nil)
+    convertUrlToMarkdownGet, err := client.ConvertUrlToMarkdownGet(nil).Load(nil, nil)
     if err != nil { /* handle */ }
-    // converturltomarkdownget is the returned record
+    // convertUrlToMarkdownGet is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -281,7 +281,7 @@ API path: `/`
 
 ### ConvertUrlToMarkdownGet
 
-Create an instance: `convert_url_to_markdown_get := client.ConvertUrlToMarkdownGet(nil)`
+Create an instance: `convertUrlToMarkdownGet := client.ConvertUrlToMarkdownGet(nil)`
 
 #### Operations
 
@@ -292,17 +292,17 @@ Create an instance: `convert_url_to_markdown_get := client.ConvertUrlToMarkdownG
 #### Example: Load
 
 ```go
-convert_url_to_markdown_get, err := client.ConvertUrlToMarkdownGet(nil).Load(nil, nil)
+convertUrlToMarkdownGet, err := client.ConvertUrlToMarkdownGet(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(convert_url_to_markdown_get) // the loaded record
+fmt.Println(convertUrlToMarkdownGet) // the loaded record
 ```
 
 
 ### ConvertUrlToMarkdownPost
 
-Create an instance: `convert_url_to_markdown_post := client.ConvertUrlToMarkdownPost(nil)`
+Create an instance: `convertUrlToMarkdownPost := client.ConvertUrlToMarkdownPost(nil)`
 
 #### Operations
 
@@ -315,6 +315,10 @@ Create an instance: `convert_url_to_markdown_post := client.ConvertUrlToMarkdown
 ```go
 result, err := client.ConvertUrlToMarkdownPost(nil).Create(map[string]any{
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 

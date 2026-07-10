@@ -19,9 +19,9 @@ main: {
           url: "https://urltomarkdown.herokuapp.com"
         }
       ]
+      summary: "This API converts web pages into Markdown format."
       title: "Web Page to Markdown"
       version: "1.0.0"
+      website: "https://github.com/macsplit/urltomarkdown"
     }
   }
-}
-

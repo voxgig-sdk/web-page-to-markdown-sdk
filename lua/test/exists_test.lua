@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- WebPageToMarkdown SDK exists test
 
 local sdk = require("web-page-to-markdown_sdk")
 

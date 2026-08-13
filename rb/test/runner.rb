@@ -23,8 +23,8 @@ module WebPageToMarkdownTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("WEBPAGETOMARKDOWN_TEST_LIVE")
-    override = getenv("WEBPAGETOMARKDOWN_TEST_OVERRIDE")
+    live = getenv("WEB_PAGE_TO_MARKDOWN_TEST_LIVE")
+    override = getenv("WEB_PAGE_TO_MARKDOWN_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module WebPageToMarkdownTestRunner
       end
     end
 
-    explain = getenv("WEBPAGETOMARKDOWN_TEST_EXPLAIN")
-    m["WEBPAGETOMARKDOWN_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("WEB_PAGE_TO_MARKDOWN_TEST_EXPLAIN")
+    m["WEB_PAGE_TO_MARKDOWN_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

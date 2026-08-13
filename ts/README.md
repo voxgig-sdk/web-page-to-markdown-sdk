@@ -121,7 +121,8 @@ Create a mock client for unit testing — no server required:
 const client = WebPageToMarkdownSDK.test()
 
 const converturltomarkdownget = await client.ConvertUrlToMarkdownGet().load()
-// converturltomarkdownget is a bare entity populated with mock response data
+// converturltomarkdownget is the entity, populated with mock response data
+// — call converturltomarkdownget.data() for the record itself
 console.log(converturltomarkdownget)
 ```
 

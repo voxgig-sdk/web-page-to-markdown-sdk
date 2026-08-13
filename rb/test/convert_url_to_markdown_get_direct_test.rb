@@ -65,11 +65,11 @@ def convert_url_to_markdown_get_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "WEBPAGETOMARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID" => {},
-    "WEBPAGETOMARKDOWN_TEST_LIVE" => "FALSE",
+    "WEB_PAGE_TO_MARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID" => {},
+    "WEB_PAGE_TO_MARKDOWN_TEST_LIVE" => "FALSE",
   })
 
-  live = env["WEBPAGETOMARKDOWN_TEST_LIVE"] == "TRUE"
+  live = env["WEB_PAGE_TO_MARKDOWN_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

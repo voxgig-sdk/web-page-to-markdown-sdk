@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# WebPageToMarkdown SDK exists test
 
 import pytest
 from webpagetomarkdown_sdk import WebPageToMarkdownSDK

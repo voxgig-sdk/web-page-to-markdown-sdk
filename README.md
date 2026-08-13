@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = WebPageToMarkdownSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = WebPageToMarkdownSDK.test({
+  entity: {
+    convert_url_to_markdown_get: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const converturltomarkdownget = await client.ConvertUrlToMarkdownGet().load()
-// converturltomarkdownget is a bare ConvertUrlToMarkdownGet populated with mock data
+// converturltomarkdownget is the ConvertUrlToMarkdownGet entity, populated with mock data
+// — call converturltomarkdownget.data() for the record itself
 console.log(converturltomarkdownget)
 ```
 
@@ -183,7 +192,7 @@ require_once 'webpagetomarkdown_sdk.php';
 $client = new WebPageToMarkdownSDK();
 
 
-// Load a specific converturltomarkdownget (returns the bare record; throws on error)
+// Load a specific converturltomarkdownget (returns the ENTITY; call data_get() for the record; throws on error)
 $converturltomarkdownget = $client->ConvertUrlToMarkdownGet()->load();
 print_r($converturltomarkdownget);
 ```
@@ -211,7 +220,7 @@ require_relative "WebPageToMarkdown_sdk"
 client = WebPageToMarkdownSDK.new
 
 
-# Load a specific converturltomarkdownget (returns the bare record; raises on error)
+# Load a specific converturltomarkdownget (returns the ENTITY; call data_get for the record)
 converturltomarkdownget = client.ConvertUrlToMarkdownGet.load()
 puts converturltomarkdownget
 ```
@@ -345,6 +354,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://github.com/macsplit/urltomarkdown](https://github.com/macsplit/urltomarkdown)
 

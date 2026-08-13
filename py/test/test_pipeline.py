@@ -16,11 +16,11 @@
 import pytest
 
 from webpagetomarkdown_sdk import WebPageToMarkdownSDK
-from core.error import WebPageToMarkdownError
-from core.result import WebPageToMarkdownResult
-from core.response import WebPageToMarkdownResponse
-from core.spec import WebPageToMarkdownSpec
-from feature.base_feature import WebPageToMarkdownBaseFeature
+from webpagetomarkdown_sdk.core.error import WebPageToMarkdownError
+from webpagetomarkdown_sdk.core.result import WebPageToMarkdownResult
+from webpagetomarkdown_sdk.core.response import WebPageToMarkdownResponse
+from webpagetomarkdown_sdk.core.spec import WebPageToMarkdownSpec
+from webpagetomarkdown_sdk.feature.base_feature import WebPageToMarkdownBaseFeature
 
 
 def _client():

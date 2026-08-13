@@ -33,7 +33,7 @@ class ConvertUrlToMarkdownGetEntityTest extends TestCase
         // The basic flow consumes synthetic IDs from the fixture. In live mode
         // without an *_ENTID env override, those IDs hit the live API and 4xx.
         if (!empty($setup["synthetic_only"])) {
-            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set WEBPAGETOMARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID JSON to run live");
+            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set WEB_PAGE_TO_MARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID JSON to run live");
             return;
         }
         $client = $setup["client"];
@@ -77,22 +77,22 @@ function convert_url_to_markdown_get_basic_setup($extra)
     // Detect ENTID env override before envOverride consumes it. When live
     // mode is on without a real override, the basic test runs against synthetic
     // IDs from the fixture and 4xx's. Surface this so the test can skip.
-    $entid_env_raw = getenv("WEBPAGETOMARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID");
+    $entid_env_raw = getenv("WEB_PAGE_TO_MARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID");
     $idmap_overridden = $entid_env_raw !== false && str_starts_with(trim($entid_env_raw), "{");
 
     $env = Runner::env_override([
-        "WEBPAGETOMARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID" => $idmap,
-        "WEBPAGETOMARKDOWN_TEST_LIVE" => "FALSE",
-        "WEBPAGETOMARKDOWN_TEST_EXPLAIN" => "FALSE",
+        "WEB_PAGE_TO_MARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID" => $idmap,
+        "WEB_PAGE_TO_MARKDOWN_TEST_LIVE" => "FALSE",
+        "WEB_PAGE_TO_MARKDOWN_TEST_EXPLAIN" => "FALSE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
-        $env["WEBPAGETOMARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID"]);
+        $env["WEB_PAGE_TO_MARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID"]);
     if ($idmap_resolved === null) {
         $idmap_resolved = Helpers::to_map($idmap);
     }
 
-    if ($env["WEBPAGETOMARKDOWN_TEST_LIVE"] === "TRUE") {
+    if ($env["WEB_PAGE_TO_MARKDOWN_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
             ],
@@ -101,13 +101,13 @@ function convert_url_to_markdown_get_basic_setup($extra)
         $client = new WebPageToMarkdownSDK(Helpers::to_map($merged_opts));
     }
 
-    $live = $env["WEBPAGETOMARKDOWN_TEST_LIVE"] === "TRUE";
+    $live = $env["WEB_PAGE_TO_MARKDOWN_TEST_LIVE"] === "TRUE";
     return [
         "client" => $client,
         "data" => $entity_data,
         "idmap" => $idmap_resolved,
         "env" => $env,
-        "explain" => $env["WEBPAGETOMARKDOWN_TEST_EXPLAIN"] === "TRUE",
+        "explain" => $env["WEB_PAGE_TO_MARKDOWN_TEST_EXPLAIN"] === "TRUE",
         "live" => $live,
         "synthetic_only" => $live && !$idmap_overridden,
         "now" => (int)(microtime(true) * 1000),

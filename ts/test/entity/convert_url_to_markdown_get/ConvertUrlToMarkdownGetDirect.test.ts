@@ -19,11 +19,15 @@ import {
 describe('ConvertUrlToMarkdownGetDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when WEBPAGETOMARKDOWN_TEST_LIVE=TRUE.
-  afterEach(liveDelay('WEBPAGETOMARKDOWN_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when WEB_PAGE_TO_MARKDOWN_TEST_LIVE=TRUE.
+  afterEach(liveDelay('WEB_PAGE_TO_MARKDOWN_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new WebPageToMarkdownSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -76,17 +80,17 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'WEBPAGETOMARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID': {},
-    'WEBPAGETOMARKDOWN_TEST_LIVE': 'FALSE',
+    'WEB_PAGE_TO_MARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID': {},
+    'WEB_PAGE_TO_MARKDOWN_TEST_LIVE': 'FALSE',
   })
 
-  const live = 'TRUE' === env.WEBPAGETOMARKDOWN_TEST_LIVE
+  const live = 'TRUE' === env.WEB_PAGE_TO_MARKDOWN_TEST_LIVE
 
   if (live) {
     const client = new WebPageToMarkdownSDK({
     })
 
-    let idmap: any = env['WEBPAGETOMARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID']
+    let idmap: any = env['WEB_PAGE_TO_MARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

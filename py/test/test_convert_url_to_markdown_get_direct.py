@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from webpagetomarkdown_sdk.utility.voxgig_struct import voxgig_struct as vs
 from webpagetomarkdown_sdk import WebPageToMarkdownSDK
-from core import helpers
+from webpagetomarkdown_sdk.core import helpers
 from test import runner
 
 
@@ -61,11 +61,11 @@ def _convert_url_to_markdown_get_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "WEBPAGETOMARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID": {},
-        "WEBPAGETOMARKDOWN_TEST_LIVE": "FALSE",
+        "WEB_PAGE_TO_MARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID": {},
+        "WEB_PAGE_TO_MARKDOWN_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("WEBPAGETOMARKDOWN_TEST_LIVE") == "TRUE"
+    live = env.get("WEB_PAGE_TO_MARKDOWN_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

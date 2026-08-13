@@ -43,8 +43,8 @@ class WebPageToMarkdownTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('WEBPAGETOMARKDOWN_TEST_LIVE');
-        $override = self::getenv('WEBPAGETOMARKDOWN_TEST_OVERRIDE');
+        $live = self::getenv('WEB_PAGE_TO_MARKDOWN_TEST_LIVE');
+        $override = self::getenv('WEB_PAGE_TO_MARKDOWN_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class WebPageToMarkdownTestRunner
             }
         }
 
-        $explain = self::getenv('WEBPAGETOMARKDOWN_TEST_EXPLAIN');
+        $explain = self::getenv('WEB_PAGE_TO_MARKDOWN_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['WEBPAGETOMARKDOWN_TEST_EXPLAIN'] = $explain;
+            $m['WEB_PAGE_TO_MARKDOWN_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

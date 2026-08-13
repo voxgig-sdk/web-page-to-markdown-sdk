@@ -26,8 +26,8 @@ import {
 describe('ConvertUrlToMarkdownGetEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when WEBPAGETOMARKDOWN_TEST_LIVE=TRUE.
-  afterEach(liveDelay('WEBPAGETOMARKDOWN_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when WEB_PAGE_TO_MARKDOWN_TEST_LIVE=TRUE.
+  afterEach(liveDelay('WEB_PAGE_TO_MARKDOWN_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = WebPageToMarkdownSDK.test()
@@ -62,7 +62,7 @@ describe('ConvertUrlToMarkdownGetEntity', async () => {
     // LOAD
     const convert_url_to_markdown_get_ref01_ent = client.ConvertUrlToMarkdownGet()
     const convert_url_to_markdown_get_ref01_match_dt0: any = {}
-    const convert_url_to_markdown_get_ref01_data_dt0 = await convert_url_to_markdown_get_ref01_ent.load(convert_url_to_markdown_get_ref01_match_dt0)
+    const convert_url_to_markdown_get_ref01_data_dt0 = (await convert_url_to_markdown_get_ref01_ent.load(convert_url_to_markdown_get_ref01_match_dt0)).data()
     assert(null != convert_url_to_markdown_get_ref01_data_dt0)
 
 

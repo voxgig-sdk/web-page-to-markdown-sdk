@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ WebPageToMarkdownUtility.registrar = ->(u) {
   u.prepare_params = WebPageToMarkdownUtilities::PrepareParams
   u.prepare_path = WebPageToMarkdownUtilities::PreparePath
   u.prepare_query = WebPageToMarkdownUtilities::PrepareQuery
+  u.graphql_body = WebPageToMarkdownUtilities::GraphqlBody
+  u.graphql_errors = WebPageToMarkdownUtilities::GraphqlErrors
   u.result_basic = WebPageToMarkdownUtilities::ResultBasic
   u.result_body = WebPageToMarkdownUtilities::ResultBody
   u.result_headers = WebPageToMarkdownUtilities::ResultHeaders

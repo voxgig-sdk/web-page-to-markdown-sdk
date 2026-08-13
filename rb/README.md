@@ -34,7 +34,7 @@ client = WebPageToMarkdownSDK.new
 
 ```ruby
 begin
-  # load returns the bare ConvertUrlToMarkdownGet record (raises on error).
+  # load returns the ENTITY — call data_get for the ConvertUrlToMarkdownGet record (raises on error).
   converturltomarkdownget = client.ConvertUrlToMarkdownGet.load()
   puts converturltomarkdownget
 rescue => err
@@ -117,7 +117,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = WebPageToMarkdownSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 converturltomarkdownget = client.ConvertUrlToMarkdownGet.load()
 puts converturltomarkdownget
 ```
@@ -268,7 +269,7 @@ Create an instance: `convert_url_to_markdown_get = client.ConvertUrlToMarkdownGe
 #### Example: Load
 
 ```ruby
-# load returns the bare ConvertUrlToMarkdownGet record (raises on error).
+# load returns the ENTITY — call data_get for the ConvertUrlToMarkdownGet record (raises on error).
 convert_url_to_markdown_get = client.ConvertUrlToMarkdownGet.load()
 ```
 

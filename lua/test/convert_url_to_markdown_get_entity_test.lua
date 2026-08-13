@@ -29,7 +29,7 @@ describe("ConvertUrlToMarkdownGetEntity", function()
     -- The basic flow consumes synthetic IDs from the fixture. In live mode
     -- without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup.synthetic_only then
-      pending("live entity test uses synthetic IDs from fixture — set WEBPAGETOMARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID JSON to run live")
+      pending("live entity test uses synthetic IDs from fixture — set WEB_PAGE_TO_MARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID JSON to run live")
       return
     end
     local client = setup.client
@@ -84,22 +84,22 @@ function convert_url_to_markdown_get_basic_setup(extra)
   -- Detect ENTID env override before envOverride consumes it. When live
   -- mode is on without a real override, the basic test runs against synthetic
   -- IDs from the fixture and 4xx's. Surface this so the test can skip.
-  local entid_env_raw = os.getenv("WEBPAGETOMARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID")
+  local entid_env_raw = os.getenv("WEB_PAGE_TO_MARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID")
   local idmap_overridden = entid_env_raw ~= nil and entid_env_raw:match("^%s*{") ~= nil
 
   local env = runner.env_override({
-    ["WEBPAGETOMARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID"] = idmap,
-    ["WEBPAGETOMARKDOWN_TEST_LIVE"] = "FALSE",
-    ["WEBPAGETOMARKDOWN_TEST_EXPLAIN"] = "FALSE",
+    ["WEB_PAGE_TO_MARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID"] = idmap,
+    ["WEB_PAGE_TO_MARKDOWN_TEST_LIVE"] = "FALSE",
+    ["WEB_PAGE_TO_MARKDOWN_TEST_EXPLAIN"] = "FALSE",
   })
 
   local idmap_resolved = helpers.to_map(
-    env["WEBPAGETOMARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID"])
+    env["WEB_PAGE_TO_MARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID"])
   if idmap_resolved == nil then
     idmap_resolved = helpers.to_map(idmap)
   end
 
-  if env["WEBPAGETOMARKDOWN_TEST_LIVE"] == "TRUE" then
+  if env["WEB_PAGE_TO_MARKDOWN_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
       },
@@ -108,13 +108,13 @@ function convert_url_to_markdown_get_basic_setup(extra)
     client = sdk.new(helpers.to_map(merged_opts))
   end
 
-  local live = env["WEBPAGETOMARKDOWN_TEST_LIVE"] == "TRUE"
+  local live = env["WEB_PAGE_TO_MARKDOWN_TEST_LIVE"] == "TRUE"
   return {
     client = client,
     data = entity_data,
     idmap = idmap_resolved,
     env = env,
-    explain = env["WEBPAGETOMARKDOWN_TEST_EXPLAIN"] == "TRUE",
+    explain = env["WEB_PAGE_TO_MARKDOWN_TEST_EXPLAIN"] == "TRUE",
     live = live,
     synthetic_only = live and not idmap_overridden,
     now = os.time() * 1000,

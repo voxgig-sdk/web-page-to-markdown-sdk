@@ -1,5 +1,8 @@
 -- WebPageToMarkdown SDK configuration
 
+-- Build a fresh, fully materialised config table. Every call rebuilds the
+-- whole structure, so prefer require("config_shared") unless you need a
+-- private copy you intend to mutate.
 local function make_config()
   return {
     main = {
@@ -32,38 +35,30 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["example"] = true,
                       ["kind"] = "query",
                       ["name"] = "clean",
                       ["orig"] = "clean",
-                      ["reqd"] = false,
                       ["type"] = "`$BOOLEAN`",
                     },
                     {
-                      ["active"] = true,
                       ["example"] = true,
                       ["kind"] = "query",
                       ["name"] = "link",
                       ["orig"] = "link",
-                      ["reqd"] = false,
                       ["type"] = "`$BOOLEAN`",
                     },
                     {
-                      ["active"] = true,
                       ["example"] = false,
                       ["kind"] = "query",
                       ["name"] = "title",
                       ["orig"] = "title",
-                      ["reqd"] = false,
                       ["type"] = "`$BOOLEAN`",
                     },
                     {
-                      ["active"] = true,
                       ["example"] = "https://www.mozilla.org/en-GB/firefox/",
                       ["kind"] = "query",
                       ["name"] = "url",
@@ -89,10 +84,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "load",
           },
         },
         ["relations"] = {
@@ -108,34 +101,27 @@ local function make_config()
             ["name"] = "create",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["example"] = true,
                       ["kind"] = "query",
                       ["name"] = "clean",
                       ["orig"] = "clean",
-                      ["reqd"] = false,
                       ["type"] = "`$BOOLEAN`",
                     },
                     {
-                      ["active"] = true,
                       ["example"] = true,
                       ["kind"] = "query",
                       ["name"] = "link",
                       ["orig"] = "link",
-                      ["reqd"] = false,
                       ["type"] = "`$BOOLEAN`",
                     },
                     {
-                      ["active"] = true,
                       ["example"] = false,
                       ["kind"] = "query",
                       ["name"] = "title",
                       ["orig"] = "title",
-                      ["reqd"] = false,
                       ["type"] = "`$BOOLEAN`",
                     },
                   },
@@ -155,10 +141,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "create",
           },
         },
         ["relations"] = {

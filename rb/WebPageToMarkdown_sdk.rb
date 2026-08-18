@@ -28,7 +28,7 @@ class WebPageToMarkdownSDK
     utility = WebPageToMarkdownUtility.new
     @_utility = utility
 
-    config = WebPageToMarkdownConfig.make_config
+    config = WebPageToMarkdownConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

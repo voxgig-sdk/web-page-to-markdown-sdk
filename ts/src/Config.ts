@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://urltomarkdown.herokuapp.com',
+    base: "https://urltomarkdown.herokuapp.com",
 
     headers: {
       "content-type": "application/json"
@@ -64,38 +64,30 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": true,
                     "kind": "query",
                     "name": "clean",
                     "orig": "clean",
-                    "reqd": false,
                     "type": "`$BOOLEAN`"
                   },
                   {
-                    "active": true,
                     "example": true,
                     "kind": "query",
                     "name": "link",
                     "orig": "link",
-                    "reqd": false,
                     "type": "`$BOOLEAN`"
                   },
                   {
-                    "active": true,
                     "example": false,
                     "kind": "query",
                     "name": "title",
                     "orig": "title",
-                    "reqd": false,
                     "type": "`$BOOLEAN`"
                   },
                   {
-                    "active": true,
                     "example": "https://www.mozilla.org/en-GB/firefox/",
                     "kind": "query",
                     "name": "url",
@@ -120,11 +112,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -140,34 +130,27 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": true,
                     "kind": "query",
                     "name": "clean",
                     "orig": "clean",
-                    "reqd": false,
                     "type": "`$BOOLEAN`"
                   },
                   {
-                    "active": true,
                     "example": true,
                     "kind": "query",
                     "name": "link",
                     "orig": "link",
-                    "reqd": false,
                     "type": "`$BOOLEAN`"
                   },
                   {
-                    "active": true,
                     "example": false,
                     "kind": "query",
                     "name": "title",
                     "orig": "title",
-                    "reqd": false,
                     "type": "`$BOOLEAN`"
                   }
                 ]
@@ -186,11 +169,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {

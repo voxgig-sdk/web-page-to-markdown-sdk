@@ -40,7 +40,7 @@ class WebPageToMarkdownSDK
         $utility = new WebPageToMarkdownUtility();
         $this->_utility = $utility;
 
-        $config = WebPageToMarkdownConfig::make_config();
+        $config = WebPageToMarkdownConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

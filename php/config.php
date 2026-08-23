@@ -33,6 +33,9 @@ class WebPageToMarkdownConfig
         return [
             "main" => [
                 "name" => "WebPageToMarkdown",
+                "slug" => "web-page-to-markdown",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [

@@ -28,6 +28,7 @@ module WebPageToMarkdownConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {

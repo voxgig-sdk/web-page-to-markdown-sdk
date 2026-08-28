@@ -42,7 +42,7 @@ client = WebPageToMarkdownSDK()
 
 ```python
 try:
-    converturltomarkdownget = client.ConvertUrlToMarkdownGet().load()
+    converturltomarkdownget = client.ConvertUrlToMarkdownGet().load({"url": "example_url"})
     print(converturltomarkdownget)
 except Exception as err:
     print(f"load failed: {err}")
@@ -55,7 +55,7 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    converturltomarkdownget = client.ConvertUrlToMarkdownGet().load()
+    converturltomarkdownget = client.ConvertUrlToMarkdownGet().load({"url": "example"})
     print(converturltomarkdownget)
 except Exception as err:
     print(f"load failed: {err}")
@@ -124,7 +124,7 @@ client = WebPageToMarkdownSDK.test()
 
 # Entity ops return the ENTITY and raises on error;
 # call data_get() for the record.
-converturltomarkdownget = client.ConvertUrlToMarkdownGet().load()
+converturltomarkdownget = client.ConvertUrlToMarkdownGet().load({"url": "example"})
 # converturltomarkdownget contains the mock response record
 ```
 
@@ -275,7 +275,7 @@ Create an instance: `convert_url_to_markdown_get = client.ConvertUrlToMarkdownGe
 #### Example: Load
 
 ```python
-convert_url_to_markdown_get = client.ConvertUrlToMarkdownGet().load()
+convert_url_to_markdown_get = client.ConvertUrlToMarkdownGet().load({"url": "url"})
 ```
 
 
@@ -295,6 +295,29 @@ Create an instance: `convert_url_to_markdown_post = client.ConvertUrlToMarkdownP
 convert_url_to_markdown_post = client.ConvertUrlToMarkdownPost().create({
 })
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -373,7 +396,7 @@ stores the returned data and match criteria internally.
 
 ```python
 converturltomarkdownget = client.ConvertUrlToMarkdownGet()
-converturltomarkdownget.load()
+converturltomarkdownget.load({"url": "example"})
 
 # converturltomarkdownget.data_get() now returns the converturltomarkdownget data from the last load
 # converturltomarkdownget.match_get() returns the last match criteria

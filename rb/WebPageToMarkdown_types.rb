@@ -13,14 +13,44 @@ class ConvertUrlToMarkdownGet
 end
 
 # Request payload for ConvertUrlToMarkdownGet#load.
-class ConvertUrlToMarkdownGetLoadMatch
-end
+#
+# @!attribute [rw] clean
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] link
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] title
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] url
+#   @return [String]
+ConvertUrlToMarkdownGetLoadMatch = Struct.new(
+  :clean,
+  :link,
+  :title,
+  :url,
+  keyword_init: true
+)
 
 # ConvertUrlToMarkdownPost entity data model.
 class ConvertUrlToMarkdownPost
 end
 
 # Request payload for ConvertUrlToMarkdownPost#create.
-class ConvertUrlToMarkdownPostCreateData
-end
+#
+# @!attribute [rw] clean
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] link
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] title
+#   @return [Boolean, nil]
+ConvertUrlToMarkdownPostCreateData = Struct.new(
+  :clean,
+  :link,
+  :title,
+  keyword_init: true
+)
 

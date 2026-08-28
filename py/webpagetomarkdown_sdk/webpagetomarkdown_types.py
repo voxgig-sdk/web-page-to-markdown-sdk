@@ -20,13 +20,21 @@ class ConvertUrlToMarkdownGet(TypedDict):
     pass
 
 
-class ConvertUrlToMarkdownGetLoadMatch(TypedDict):
-    pass
+class ConvertUrlToMarkdownGetLoadMatchRequired(TypedDict):
+    url: str
+
+
+class ConvertUrlToMarkdownGetLoadMatch(ConvertUrlToMarkdownGetLoadMatchRequired, total=False):
+    clean: bool
+    link: bool
+    title: bool
 
 
 class ConvertUrlToMarkdownPost(TypedDict):
     pass
 
 
-class ConvertUrlToMarkdownPostCreateData(TypedDict):
-    pass
+class ConvertUrlToMarkdownPostCreateData(TypedDict, total=False):
+    clean: bool
+    link: bool
+    title: bool

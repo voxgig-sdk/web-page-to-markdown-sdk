@@ -18,6 +18,10 @@ type ConvertUrlToMarkdownGet struct {
 
 // ConvertUrlToMarkdownGetLoadMatch is the typed request payload for ConvertUrlToMarkdownGet.LoadTyped.
 type ConvertUrlToMarkdownGetLoadMatch struct {
+	Clean *bool `json:"clean,omitempty"`
+	Link *bool `json:"link,omitempty"`
+	Title *bool `json:"title,omitempty"`
+	Url string `json:"url"`
 }
 
 // ConvertUrlToMarkdownPost is the typed data model for the convert_url_to_markdown_post entity.
@@ -26,6 +30,9 @@ type ConvertUrlToMarkdownPost struct {
 
 // ConvertUrlToMarkdownPostCreateData is the typed request payload for ConvertUrlToMarkdownPost.CreateTyped.
 type ConvertUrlToMarkdownPostCreateData struct {
+	Clean *bool `json:"clean,omitempty"`
+	Link *bool `json:"link,omitempty"`
+	Title *bool `json:"title,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

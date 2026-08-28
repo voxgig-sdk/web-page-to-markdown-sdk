@@ -51,7 +51,7 @@ func main() {
     client := sdk.New()
 
     // Load a single convertUrlToMarkdownGet — the value is the loaded record.
-    convertUrlToMarkdownGet, err := client.ConvertUrlToMarkdownGet(nil).Load(nil, nil)
+    convertUrlToMarkdownGet, err := client.ConvertUrlToMarkdownGet(nil).Load(map[string]any{"url": "example_url"}, nil)
     if err != nil {
         panic(err)
     }
@@ -66,7 +66,7 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-converturltomarkdownget, err := client.ConvertUrlToMarkdownGet(nil).Load(nil, nil)
+converturltomarkdownget, err := client.ConvertUrlToMarkdownGet(nil).Load(map[string]any{"url": "example"}, nil)
 if err != nil {
     // handle err
     return
@@ -136,7 +136,7 @@ Create a mock client for unit testing — no server required:
 client := sdk.Test()
 
 convertUrlToMarkdownGet, err := client.ConvertUrlToMarkdownGet(nil).Load(
-    nil, nil,
+    map[string]any{"url": "example"}, nil,
 )
 if err != nil {
     panic(err)
@@ -292,7 +292,7 @@ Create an instance: `convertUrlToMarkdownGet := client.ConvertUrlToMarkdownGet(n
 #### Example: Load
 
 ```go
-convertUrlToMarkdownGet, err := client.ConvertUrlToMarkdownGet(nil).Load(nil, nil)
+convertUrlToMarkdownGet, err := client.ConvertUrlToMarkdownGet(nil).Load(map[string]any{"url": "url"}, nil)
 if err != nil {
     panic(err)
 }
@@ -320,6 +320,29 @@ if err != nil {
 }
 fmt.Println(result)
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -396,7 +419,7 @@ stores the returned data and match criteria internally.
 
 ```go
 converturltomarkdownget := client.ConvertUrlToMarkdownGet(nil)
-converturltomarkdownget.Load(nil, nil)
+converturltomarkdownget.Load(map[string]any{"url": "example"}, nil)
 
 // converturltomarkdownget.Data() now returns the converturltomarkdownget data from the last load
 // converturltomarkdownget.Match() returns the last match criteria

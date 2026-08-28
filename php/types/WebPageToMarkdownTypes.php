@@ -20,6 +20,10 @@ class ConvertUrlToMarkdownGet
 /** Request payload for ConvertUrlToMarkdownGet#load. */
 class ConvertUrlToMarkdownGetLoadMatch
 {
+    public ?bool $clean = null;
+    public ?bool $link = null;
+    public ?bool $title = null;
+    public string $url;
 }
 
 /** ConvertUrlToMarkdownPost entity data model. */
@@ -30,5 +34,8 @@ class ConvertUrlToMarkdownPost
 /** Request payload for ConvertUrlToMarkdownPost#create. */
 class ConvertUrlToMarkdownPostCreateData
 {
+    public ?bool $clean = null;
+    public ?bool $link = null;
+    public ?bool $title = null;
 }
 

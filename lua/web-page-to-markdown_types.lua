@@ -9,10 +9,17 @@
 ---@class ConvertUrlToMarkdownGet
 
 ---@class ConvertUrlToMarkdownGetLoadMatch
+---@field clean? boolean
+---@field link? boolean
+---@field title? boolean
+---@field url string
 
 ---@class ConvertUrlToMarkdownPost
 
 ---@class ConvertUrlToMarkdownPostCreateData
+---@field clean? boolean
+---@field link? boolean
+---@field title? boolean
 
 local M = {}
 

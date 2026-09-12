@@ -101,7 +101,7 @@ class WebPageToMarkdownConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/',
-                  'parts' => [],
+                  'segments' => [],
                   'select' => [
                     'exist' => [
                       'clean',
@@ -114,6 +114,7 @@ class WebPageToMarkdownConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
+                  'parts' => [],
                 ],
               ],
             ],
@@ -159,7 +160,7 @@ class WebPageToMarkdownConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/',
-                  'parts' => [],
+                  'segments' => [],
                   'select' => [
                     'exist' => [
                       'clean',
@@ -171,6 +172,7 @@ class WebPageToMarkdownConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
+                  'parts' => [],
                 ],
               ],
             ],

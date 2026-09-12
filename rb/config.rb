@@ -87,7 +87,7 @@ module WebPageToMarkdownConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/",
-                  "parts" => [],
+                  "segments" => [],
                   "select" => {
                     "exist" => [
                       "clean",
@@ -100,6 +100,7 @@ module WebPageToMarkdownConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [],
                 },
               ],
             },
@@ -145,7 +146,7 @@ module WebPageToMarkdownConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/",
-                  "parts" => [],
+                  "segments" => [],
                   "select" => {
                     "exist" => [
                       "clean",
@@ -157,6 +158,7 @@ module WebPageToMarkdownConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [],
                 },
               ],
             },

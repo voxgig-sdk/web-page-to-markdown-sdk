@@ -909,7 +909,7 @@
             "registry": {
               "active": false,
               "name": "npm",
-              "package": "",
+              "package": "@voxgig-sdk/web-page-to-markdown-sdk",
               "state": "pending",
               "url": "https://registry.npmjs.org",
               "vault": {

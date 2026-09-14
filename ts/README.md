@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { WebPageToMarkdownSDK } from '@voxgig-sdk/web-page-to-markdown'
+import { WebPageToMarkdownSDK } from '@voxgig-sdk/web-page-to-markdown-sdk'
 
 const client = new WebPageToMarkdownSDK()
 ```
@@ -423,7 +423,7 @@ web-page-to-markdown/
 Import the SDK from the package root:
 
 ```ts
-import { WebPageToMarkdownSDK } from '@voxgig-sdk/web-page-to-markdown'
+import { WebPageToMarkdownSDK } from '@voxgig-sdk/web-page-to-markdown-sdk'
 ```
 
 ### Entity state

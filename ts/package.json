@@ -1,5 +1,5 @@
 {
-  "name": "@voxgig-sdk/web-page-to-markdown",
+  "name": "@voxgig-sdk/web-page-to-markdown-sdk",
   "version": "0.0.1",
   "description": "Unofficial generated TypeScript SDK for the Web Page to Markdown public API. Not affiliated with or endorsed by the upstream API provider.",
   "keywords": [

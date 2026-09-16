@@ -16,5 +16,116 @@
     "convert_url_to_markdown_post": {
       "convert_url_to_markdown_post_ref01": {}
     }
+  },
+  "requests": {
+    "POST /": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "convertUrlToMarkdownPost",
+        "parameters": [
+          {
+            "description": "Include the page title as a heading in the Markdown output. Title is also returned in the X-Title HTTP header.",
+            "in": "query",
+            "name": "title",
+            "required": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Whether to include links in the Markdown output",
+            "in": "query",
+            "name": "links",
+            "required": false,
+            "schema": {
+              "default": true,
+              "type": "boolean"
+            }
+          },
+          {
+            "description": "Whether to clean/filter content before conversion. When false, output will be more verbose but may have more junk or artefacts.",
+            "in": "query",
+            "name": "clean",
+            "required": false,
+            "schema": {
+              "default": true,
+              "type": "boolean"
+            }
+          }
+        ],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "example": "url=https%3A%2F%2Fwww.mozilla.org%2Fen-GB%2Ffirefox%2F&html=%3C!doctype%20html%3E%3Chtml%20...",
+              "schema": {
+                "properties": {
+                  "html": {
+                    "description": "The HTML content to convert to Markdown (optional - if provided, this HTML will be used instead of fetching from the URL)",
+                    "type": "string"
+                  },
+                  "url": {
+                    "description": "The URL of the webpage being converted",
+                    "format": "uri",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "url"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "description": "Form data containing the URL and optionally the HTML content to convert",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "text/plain": {
+                "example": "# Firefox - Protect your life online with privacy-first products — Mozilla (UK)\n\nMeet our family of products\n---------------------------\n\n* [![](https://www.mozilla.org/media/protocol/img/logos/firefox/browser/logo.eb1324e44442.svg) ...",
+                "schema": {
+                  "description": "The webpage content converted to Markdown format",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Successfully converted webpage to Markdown",
+            "headers": {
+              "X-Title": {
+                "description": "URL-encoded title of the converted webpage (when title parameter is true)",
+                "example": "Firefox%20-%20Protect%20your%20life%20online%20with%20privacy-first%20products%20%E2%80%94%20Mozilla%20(UK)",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Bad request - invalid URL, HTML, or parameters"
+          },
+          "500": {
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Internal server error - failed to process the webpage"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

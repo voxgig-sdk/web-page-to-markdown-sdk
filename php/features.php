@@ -4,7 +4,10 @@ declare(strict_types=1);
 // WebPageToMarkdown SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class WebPageToMarkdownFeatures
@@ -14,8 +17,14 @@ class WebPageToMarkdownFeatures
         switch ($name) {
             case "base":
                 return new WebPageToMarkdownBaseFeature();
+            case "ratelimit":
+                return new WebPageToMarkdownRatelimitFeature();
+            case "retry":
+                return new WebPageToMarkdownRetryFeature();
             case "test":
                 return new WebPageToMarkdownTestFeature();
+            case "timeout":
+                return new WebPageToMarkdownTimeoutFeature();
             default:
                 return new WebPageToMarkdownBaseFeature();
         }
@@ -31,7 +40,10 @@ class WebPageToMarkdownFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

@@ -40,6 +40,8 @@ const node_path_1 = __importDefault(require("node:path"));
 const Fs = __importStar(require("node:fs"));
 const node_test_1 = require("node:test");
 const node_assert_1 = __importDefault(require("node:assert"));
+const live_runner_1 = require("../../live-runner");
+const live_entity_1 = require("../../live-entity");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
 // AFTER the imports on purpose: TypeScript hoists `import` above any
@@ -59,16 +61,12 @@ const utility_1 = require("../../utility");
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.WEB_PAGE_TO_MARKDOWN_TEST_LIVE;
         for (const op of ['load']) {
-            if ((0, utility_1.maybeSkipControl)(t, 'entityOp', 'convert_url_to_markdown_get.' + op, live))
+            if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'convert_url_to_markdown_get.' + op, live))
                 return;
         }
         const setup = basicSetup();
-        // The basic flow consumes synthetic IDs and field values from the
-        // fixture (entity TestData.json). Those don't exist on the live API.
-        // Skip live runs unless the user provided a real ENTID env override.
-        if (setup.syntheticOnly) {
-            t.skip('live entity test uses synthetic IDs from fixture — set WEB_PAGE_TO_MARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID JSON to run live');
-            return;
+        if (setup.live) {
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": [], "name": "convert_url_to_markdown_get", "op": { "load": { "input": "data", "name": "load", "points": [{ "active": true, "args": { "query": [{ "active": true, "example": true, "kind": "query", "name": "clean", "orig": "clean", "reqd": false, "type": "`$BOOLEAN`", "index$": 0 }, { "active": true, "example": true, "kind": "query", "name": "link", "orig": "link", "reqd": false, "type": "`$BOOLEAN`", "index$": 1 }, { "active": true, "example": false, "kind": "query", "name": "title", "orig": "title", "reqd": false, "type": "`$BOOLEAN`", "index$": 2 }, { "active": true, "example": "https://www.mozilla.org/en-GB/firefox/", "kind": "query", "name": "url", "orig": "url", "reqd": true, "type": "`$STRING`", "index$": 3 }] }, "contract": { "id": "GET /", "json": "{\"operationId\":\"convertUrlToMarkdownGet\",\"parameters\":[{\"description\":\"The URL of the webpage to convert to Markdown\",\"example\":\"https://www.mozilla.org/en-GB/firefox/\",\"in\":\"query\",\"name\":\"url\",\"required\":true,\"schema\":{\"format\":\"uri\",\"type\":\"string\"}},{\"description\":\"Include the page title as a heading in the Markdown output. Title is also returned in the X-Title HTTP header.\",\"in\":\"query\",\"name\":\"title\",\"required\":false,\"schema\":{\"default\":false,\"type\":\"boolean\"}},{\"description\":\"Whether to include links in the Markdown output\",\"in\":\"query\",\"name\":\"links\",\"required\":false,\"schema\":{\"default\":true,\"type\":\"boolean\"}},{\"description\":\"Whether to clean/filter content before conversion. When false, output will be more verbose but may have more junk or artefacts.\",\"in\":\"query\",\"name\":\"clean\",\"required\":false,\"schema\":{\"default\":true,\"type\":\"boolean\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"text/plain\":{\"example\":\"# Firefox - Protect your life online with privacy-first products — Mozilla (UK)\\n\\nMeet our family of products\\n---------------------------\\n\\n* [![](https://www.mozilla.org/media/protocol/img/logos/firefox/browser/logo.eb1324e44442.svg) ...\",\"schema\":{\"description\":\"The webpage content converted to Markdown format\",\"type\":\"string\"}}},\"description\":\"Successfully converted webpage to Markdown\",\"headers\":{\"X-Title\":{\"description\":\"URL-encoded title of the converted webpage (when title parameter is true)\",\"example\":\"Firefox%20-%20Protect%20your%20life%20online%20with%20privacy-first%20products%20%E2%80%94%20Mozilla%20(UK)\",\"schema\":{\"type\":\"string\"}}}},\"400\":{\"content\":{\"text/plain\":{\"schema\":{\"type\":\"string\"}}},\"description\":\"Bad request - invalid URL or parameters\"},\"500\":{\"content\":{\"text/plain\":{\"schema\":{\"type\":\"string\"}}},\"description\":\"Internal server error - failed to process the webpage\"}},\"securitySource\":\"unspecified\"}", "source": "openapi3", "version": 1 }, "kind": "http", "method": "GET", "orig": "/", "segments": [], "select": { "exist": ["clean", "link", "title", "url"] }, "transform": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "convert_url_to_markdown_get", "name__orig": "convert_url_to_markdown_get", "Name": "ConvertUrlToMarkdownGet", "name_": "convert_url_to_markdown_get", "name-": "convert-url-to-markdown-get", "NAME": "CONVERT_URL_TO_MARKDOWN_GET", "index$": 0 }, { "active": true, "entity": "convert_url_to_markdown_get", "key$": "BasicConvertUrlToMarkdownGetFlow", "kind": "basic", "name": "BasicConvertUrlToMarkdownGetFlow", "param": {}, "step": [{ "active": true, "data": {}, "input": { "ref": "convert_url_to_markdown_get_ref01", "srcdatavar": "convert_url_to_markdown_get_ref01_data", "suffix": "_dt0" }, "match": {}, "op": "load", "spec": [], "valid": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-convert_url_to_markdown_get_ref01" } }], "index$": 0 }] }, 'ConvertUrlToMarkdownGet');
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -102,12 +100,6 @@ function basicSetup(extra) {
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
             }]
     });
-    // Detect whether the user provided a real ENTID JSON via env var. The
-    // basic flow consumes synthetic IDs from the fixture file; without an
-    // override those synthetic IDs reach the live API and 4xx. Surface this
-    // to the test so it can skip rather than fail.
-    const idmapEnvVal = process.env['WEB_PAGE_TO_MARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID'];
-    const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{');
     const env = (0, utility_1.envOverride)({
         'WEB_PAGE_TO_MARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID': idmap,
         'WEB_PAGE_TO_MARKDOWN_TEST_LIVE': 'FALSE',
@@ -115,7 +107,13 @@ function basicSetup(extra) {
     });
     idmap = env['WEB_PAGE_TO_MARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID'];
     const live = 'TRUE' === env.WEB_PAGE_TO_MARKDOWN_TEST_LIVE;
+    const transport = (0, live_runner_1.createLiveTransport)();
     if (live) {
+        const rawIds = process.env['WEB_PAGE_TO_MARKDOWN_TEST_CONVERT_URL_TO_MARKDOWN_GET_ENTID'];
+        idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {};
+        if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+            throw new Error('Live ENTID must be a JSON object');
+        }
         client = new __1.WebPageToMarkdownSDK(merge([
             // FIRST, so the generated fields below win: sdk-test-control.json's
             // test.client.options adds to the live client, it does not redirect it.
@@ -126,7 +124,8 @@ function basicSetup(extra) {
             // argument at all - so a bare 'extra' silently discarded the apikey
             // and server values above and handed the SDK undefined. Harmless
             // while there was nothing in that object; not harmless now.
-            extra || {}
+            extra || {},
+            { system: { fetch: transport.fetch } }
         ]));
     }
     const setup = {
@@ -138,7 +137,7 @@ function basicSetup(extra) {
         data: entityData,
         explain: 'TRUE' === env.WEB_PAGE_TO_MARKDOWN_TEST_EXPLAIN,
         live,
-        syntheticOnly: live && !idmapOverridden,
+        transport,
         now: Date.now(),
     };
     return setup;

@@ -1,12 +1,18 @@
 # WebPageToMarkdown SDK feature factory
 
 from webpagetomarkdown_sdk.feature.base_feature import WebPageToMarkdownBaseFeature
+from webpagetomarkdown_sdk.feature.ratelimit_feature import WebPageToMarkdownRatelimitFeature
+from webpagetomarkdown_sdk.feature.retry_feature import WebPageToMarkdownRetryFeature
 from webpagetomarkdown_sdk.feature.test_feature import WebPageToMarkdownTestFeature
+from webpagetomarkdown_sdk.feature.timeout_feature import WebPageToMarkdownTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: WebPageToMarkdownBaseFeature(),
+    "ratelimit": lambda: WebPageToMarkdownRatelimitFeature(),
+    "retry": lambda: WebPageToMarkdownRetryFeature(),
     "test": lambda: WebPageToMarkdownTestFeature(),
+    "timeout": lambda: WebPageToMarkdownTimeoutFeature(),
 }
 
 

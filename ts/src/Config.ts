@@ -127,12 +127,12 @@ class Config {
 
     entity: {
       
-      convert_url_to_markdown_get: {
-      },
-
-      convert_url_to_markdown_post: {
-      },
-
+        convert_url_to_markdown_get: {
+        },
+  
+        convert_url_to_markdown_post: {
+        },
+  
     }
   }
 

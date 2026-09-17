@@ -1,4 +1,4 @@
 # Entity Models
 
-@"convert_url_to_markdown_get.aon"
-@"convert_url_to_markdown_post.aon"
+@"./convert_url_to_markdown_get.aon"
+@"./convert_url_to_markdown_post.aon"

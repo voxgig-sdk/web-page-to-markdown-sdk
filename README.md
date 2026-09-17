@@ -105,12 +105,12 @@ local result, err = client:ConvertUrlToMarkdownGet():load({ url = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/web-page-to-markdown-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/web-page-to-markdown-sdk/releases) |
-| Python | `voxgig-sdk-web-page-to-markdown` | publish pending — [install from git tag](https://github.com/voxgig-sdk/web-page-to-markdown-sdk/releases) |
-| PHP | `voxgig-sdk/web-page-to-markdown` | publish pending — [install from git tag](https://github.com/voxgig-sdk/web-page-to-markdown-sdk/releases) |
+| TypeScript | `@voxgig-sdk/web-page-to-markdown-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/web-page-to-markdown-sdk/tags) |
+| Python | `voxgig-sdk-web-page-to-markdown` | publish pending — [install from git tag](https://github.com/voxgig-sdk/web-page-to-markdown-sdk/tags) |
+| PHP | `voxgig-sdk/web-page-to-markdown` | publish pending — [install from git tag](https://github.com/voxgig-sdk/web-page-to-markdown-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/web-page-to-markdown-sdk/go` | `go get github.com/voxgig-sdk/web-page-to-markdown-sdk/go@latest` |
-| Ruby | `voxgig-sdk-web-page-to-markdown` | publish pending — [install from git tag](https://github.com/voxgig-sdk/web-page-to-markdown-sdk/releases) |
-| Lua | `voxgig-sdk-web-page-to-markdown` | publish pending — [install from git tag](https://github.com/voxgig-sdk/web-page-to-markdown-sdk/releases) |
+| Ruby | `voxgig-sdk-web-page-to-markdown` | publish pending — [install from git tag](https://github.com/voxgig-sdk/web-page-to-markdown-sdk/tags) |
+| Lua | `voxgig-sdk-web-page-to-markdown` | publish pending — [install from git tag](https://github.com/voxgig-sdk/web-page-to-markdown-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/web-page-to-markdown-sdk/go-cli` | `go install github.com/voxgig-sdk/web-page-to-markdown-sdk/go-cli/cmd/web-page-to-markdown@latest` |
 | Go MCP server | `github.com/voxgig-sdk/web-page-to-markdown-sdk/go-mcp` | `go get github.com/voxgig-sdk/web-page-to-markdown-sdk/go-mcp@latest` |
 

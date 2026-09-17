@@ -1,4 +1,4 @@
 # Flows
 
-@"BasicConvertUrlToMarkdownGetFlow.aon"
-@"BasicConvertUrlToMarkdownPostFlow.aon"
+@"./BasicConvertUrlToMarkdownGetFlow.aon"
+@"./BasicConvertUrlToMarkdownPostFlow.aon"
